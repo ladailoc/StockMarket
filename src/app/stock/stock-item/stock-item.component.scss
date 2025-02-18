@@ -1,0 +1,25 @@
+.stock-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.price {
+  text-align: center;
+}
+
+.stock-container .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

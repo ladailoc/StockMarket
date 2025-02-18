@@ -1,0 +1,13 @@
+<div id="container">
+    <div id="login_box">
+        <h2 style="margin-bottom: 30px; text-align: center;">Đăng nhập</h2>
+        <form>
+            <label for="">Tên đăng nhập</label>
+            <input class="username" name="username" type="text" [(ngModel)]="username"><br>
+            <label for="">Mật khẩu</label>
+            <input class="password" name="password" type="password" [(ngModel)]="password"><br>
+            <button class="btn_submit" (click)="login()">Đăng nhập</button>
+            <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
+        </form>
+    </div>
+</div>
