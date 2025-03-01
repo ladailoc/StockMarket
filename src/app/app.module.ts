@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { StockItemComponent } from './stock/stock-item/stock-item.component';
+import { CreateStockComponent } from './stock/create-stock/create-stock.component';
+import { StockHomeComponent } from './stock/stock-home/stock-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    StockItemComponent
+    StockItemComponent,
+    CreateStockComponent,
+    StockHomeComponent
   ],
   imports: [
     BrowserModule,

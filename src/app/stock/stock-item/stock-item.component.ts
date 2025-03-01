@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from '../../model/stock';
+import { CreateStockComponent } from '../create-stock/create-stock.component';
 
 @Component({
   selector: 'app-stock-item',
@@ -8,18 +9,18 @@ import { Stock } from '../../model/stock';
   styleUrl: './stock-item.component.scss'
 })
 export class StockItemComponent implements OnInit {
-  public stock: Stock;
+  public stockList: Array<Stock> = [];
 
   constructor() {
-    this.stock = new Stock('', '', 0, 0);
+    // this.stock = new Stock('', '', 0, 0);
   }
 
   ngOnInit(): void {
-    this.stock = new Stock('Test Stock Company', 'TSC', 85, 80);
+    this.stockList.push(new Stock('Test Stock Company', 'TSC', 85, 80));
   }
 
-  toggleFavorite(event: Event) {
+  toggleFavorite(event: Event, i : number) {
     console.log('We are toggling the favorite state for this stock', event);
-    this.stock.favorite = !this.stock.favorite;
+    this.stockList[i].favorite = !this.stockList[i].favorite;
   }
 }

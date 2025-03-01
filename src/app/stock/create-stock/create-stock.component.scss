@@ -1,0 +1,87 @@
+/* app.component.css */
+
+/* Style cho container của form */
+.stock-form {
+    max-width: 400px;
+    padding: 20px;
+}
+
+
+
+/* Style cho các input */
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-checkbox{
+    margin-bottom: 15px;
+}
+
+/* Style cho select */
+.form-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Style cho nút button */
+.form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng khi hover vào button */
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+/* Hiệu ứng khi focus vào input hoặc select */
+.form-input:focus,
+.form-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.valid-name {
+    background-color: rgb(58, 153, 58);
+}
+
+.invalid-name {
+    background-color: pink;
+}
+
+.invalid-code {
+    background-color: pink;
+}
+.valid-code {
+    background-color: rgb(58, 153, 58);
+}
+
+.invalid-price {
+    background-color: pink;
+}
+.valid-price {
+    background-color: rgb(58, 153, 58);
+}
+
+.error-msg {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

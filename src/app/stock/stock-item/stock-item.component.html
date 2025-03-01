@@ -1,9 +1,12 @@
+<h2>Welcom to Stock Market App!</h2>
 <div class="stock-container">
-    <div class="item">
+    <div *ngFor="let stock of stockList; let i = index">
         <div class="name">{{stock.name}} ({{stock.code}})</div>
         <div class="price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'"> ${{stock.price}}
         </div>
-        <button (click)="toggleFavorite($event)" [disabled]="stock.favorite">Add to Favorite
+        <button (click)="toggleFavorite($event, i)">Add to Favorite
         </button>
     </div>
 </div>
+
+<app-create-stock></app-create-stock>

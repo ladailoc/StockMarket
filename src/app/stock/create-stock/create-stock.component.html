@@ -1,0 +1,44 @@
+<!-- app.component.html -->
+<div class="stock-form">
+    <h2>Create Stock Form</h2>
+    <input type="text" 
+            placeholder="Stock Name" 
+            [(ngModel)]="stock.name" 
+            (ngModelChange)="checkName()"
+            class="form-input" 
+            [ngClass]="{
+                'valid-name': isStockNameValid,
+                'invalid-name': !isStockNameValid}">
+    <br>
+    <span *ngIf="!checkName()" class="error-msg">Name phải có độ dài lớn hơn 6</span>
+    <br>
+    <input type="text"
+            placeholder="Stock Code" 
+            [(ngModel)]="stock.code" 
+            (ngModelChange)="checkCode()"
+            class="form-input"
+            [ngClass]="{
+                'valid-code': isStockCodeValid,
+                'invalid-code': !isStockCodeValid}"
+        ><br>
+    <input type="text" 
+            placeholder="Stock Price" 
+            [(ngModel)]="stock.price" 
+            class="form-input"
+            (blur)="checkPrice()"
+            [ngClass]="{
+                'valid-price': isStockPriceValid,
+                'invalid-price': !isStockPriceValid}"
+        ><br>
+    <select class="form-select">
+        <option value="ABC">ABC</option>
+        <option value="XYZ">XYZ</option>
+    </select>
+    <br>
+    <input type="checkbox" name="" class="form-checkbox"> I confirm that the above details are correct<br>
+    <button (click)="showStockInfo()" class="form-button">Create Stock</button>
+</div>
+
+<div *ngIf="isShowStockInfo">
+    <p><strong>{{getStockInfo()}}</strong></p>
+</div>
