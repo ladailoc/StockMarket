@@ -16,7 +16,7 @@ export class StockItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.stockList.push(new Stock('Test Stock Company', 'TSC', 85, 80));
+    this.stockList.push(new Stock('Test Stock Company', 'TSC', 85, 80, 'NASDAQ'));
   }
 
   toggleFavorite(event: Event, i : number) {

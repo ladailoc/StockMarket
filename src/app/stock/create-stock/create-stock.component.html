@@ -4,18 +4,16 @@
     <input type="text" 
             placeholder="Stock Name" 
             [(ngModel)]="stock.name" 
-            (ngModelChange)="checkName()"
             class="form-input" 
             [ngClass]="{
                 'valid-name': isStockNameValid,
                 'invalid-name': !isStockNameValid}">
     <br>
-    <span *ngIf="!checkName()" class="error-msg">Name phải có độ dài lớn hơn 6</span>
+    <span *ngIf="!isStockNameValid" class="error-msg">Name phải có độ dài lớn hơn 6</span>
     <br>
     <input type="text"
             placeholder="Stock Code" 
             [(ngModel)]="stock.code" 
-            (ngModelChange)="checkCode()"
             class="form-input"
             [ngClass]="{
                 'valid-code': isStockCodeValid,
@@ -30,7 +28,7 @@
                 'valid-price': isStockPriceValid,
                 'invalid-price': !isStockPriceValid}"
         ><br>
-    <select class="form-select">
+    <select class="form-select" [(ngModel)]="stock.exchange">
         <option value="ABC">ABC</option>
         <option value="XYZ">XYZ</option>
     </select>
@@ -40,5 +38,6 @@
 </div>
 
 <div *ngIf="isShowStockInfo">
-    <p><strong>{{getStockInfo()}}</strong></p>
+    <p><strong>{{stock | json}}</strong></p>
+    <p><strong>Data has been confirmed: {{isDataValid}}</strong></p>
 </div>

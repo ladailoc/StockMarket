@@ -9,32 +9,29 @@ import { Stock } from '../../model/stock';
 })
 export class CreateStockComponent {
   public stock!: Stock;
-  // constructor(){
-  //   this.stock = new Stock('', '', 0, 0);
-  // }
 
   ngOnInit(): void {
-    this.stock = new Stock("", "", 0, 0);
+    this.stock = new Stock("", "", 0, 0, "");
   }
 
-  isStockNameValid = false;
-  checkName(): boolean {
-    return this.isStockNameValid = this.stock.name.trim().length >= 6;
+  get isStockNameValid(): boolean {
+    return this.stock.name.trim().length >= 6;
   }
-  isStockCodeValid = true;
+
   firstCode = "";
-  checkCode(): boolean {
-    return this.isStockCodeValid = this.firstCode == this.stock.code;
+  get isStockCodeValid(): boolean {
+    return this.firstCode == this.stock.code;
   }
+
   isStockPriceValid = true;
   checkPrice(): void {
     this.isStockPriceValid = false;
   }
 
-  getStockInfo(): string {
-    return `Stock Name is {"name" : "${this.stock.name}", "code" : "${this.stock.code}", "price" : ${this.stock.price}, "previousPrice" : ${this.stock.previousPrice}}`;
-  }
   isShowStockInfo = false;
+  get isDataValid(): boolean {
+    return this.isStockNameValid;
+  }
   showStockInfo(): void {
     this.isShowStockInfo = true;
   }
