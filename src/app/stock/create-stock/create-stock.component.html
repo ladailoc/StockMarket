@@ -1,43 +1,82 @@
 <!-- app.component.html -->
 <div class="stock-form">
     <h2>Create Stock Form</h2>
-    <input type="text" 
-            placeholder="Stock Name" 
-            [(ngModel)]="stock.name" 
-            class="form-input" 
-            [ngClass]="{
-                'valid-name': isStockNameValid,
-                'invalid-name': !isStockNameValid}">
-    <br>
-    <span *ngIf="!isStockNameValid" class="error-msg">Name phải có độ dài lớn hơn 6</span>
-    <br>
-    <input type="text"
-            placeholder="Stock Code" 
-            [(ngModel)]="stock.code" 
-            class="form-input"
-            [ngClass]="{
-                'valid-code': isStockCodeValid,
-                'invalid-code': !isStockCodeValid}"
-        ><br>
-    <input type="text" 
+    <form [formGroup]="stockForm" (ngSubmit)="showStockInfo()">
+        <input type="text" 
+                placeholder="Stock Name" 
+                [(ngModel)]="stock.name" 
+                class="form-input" 
+                [ngClass]="{
+                    'valid-name': !stockForm.get('name')?.invalid,
+                    'invalid-name': stockForm.get('name')?.invalid}"
+                formControlName = "name">
+
+        <!-- Check valid name-->
+        <div *ngIf="stockForm.get('name')?.invalid && 
+                (stockForm.get('name')?.dirty || stockForm.get('name')?.touched)" 
+            class="error-msg">
+            Name phải có độ dài lớn hơn 6
+        </div>
+
+        <input type="text" 
+                placeholder="Stock Code" 
+                [(ngModel)]="stock.code" 
+                class="form-input" 
+                [ngClass]="{
+                    'valid-code': stockForm.get('code')?.invalid,
+                    'invalid-code': !stockForm.get('code')?.invalid}"
+                formControlName = "code">
+        <br>
+
+        <!-- Check valid code -->
+        <div *ngIf="stockForm.get('code')?.invalid && 
+                (stockForm.get('code')?.dirty || stockForm.get('code')?.touched)">
+            <span *ngIf="stockForm.get('code')?.errors?.['required']" class="error-msg">
+                Stock code is required
+            </span>
+        </div>
+
+        <input type="text" 
             placeholder="Stock Price" 
             [(ngModel)]="stock.price" 
-            class="form-input"
-            (blur)="checkPrice()"
+            class="form-input" 
             [ngClass]="{
-                'valid-price': isStockPriceValid,
-                'invalid-price': !isStockPriceValid}"
-        ><br>
-    <select class="form-select" [(ngModel)]="stock.exchange">
-        <option value="ABC">ABC</option>
-        <option value="XYZ">XYZ</option>
-    </select>
-    <br>
-    <input type="checkbox" name="" class="form-checkbox"> I confirm that the above details are correct<br>
-    <button (click)="showStockInfo()" class="form-button">Create Stock</button>
+                'valid-price': !stockForm.get('price')?.touched,
+                'invalid-price': stockForm.get('price')?.touched}"
+            formControlName = "price">
+            <br>
+        <div *ngIf="stockForm.get('price')?.invalid && 
+            (stockForm.get('price')?.dirty || stockForm.get('price')?.touched)">
+            <span *ngIf="stockForm.get('price')?.errors?.['required']" class="error-msg">
+                Stock price is required
+            </span>
+        </div>
+        <select class="form-select" formControlName="exchange">
+            <option value="ABC">ABC</option>
+            <option value="XYZ">XYZ</option>
+        </select>
+        <br>
+        <input type="checkbox" name="" class="form-checkbox"> I confirm that the above details are correct<br>
+        <button class="form-button">Create Stock</button>
+        <br><br>
+        <button class="form-button" (click)="loadStockServer()">Load from Server</button>
+        <br><br>
+        <button class="form-button" (click)="createStock()">Create</button>
+    </form>
 </div>
 
 <div *ngIf="isShowStockInfo">
-    <p><strong>{{stock | json}}</strong></p>
-    <p><strong>Data has been confirmed: {{isDataValid}}</strong></p>
+    <p><strong>Form Control value: {{stockForm.value | json}}</strong></p>
+    <p><strong>Form Control status: {{stockForm.status | json}}</strong></p>
+</div>
+
+
+
+<div *ngIf="stockList.length > 0">
+    <h3>Danh sách cổ phiếu:</h3>
+    <ul>
+      <li *ngFor="let stock of stockList">
+        {{stock.name}} - {{stock.code}} - {{stock.price}}
+      </li>
+    </ul>
 </div>
