@@ -72,11 +72,25 @@
 
 
 
-<div *ngIf="stockList.length > 0">
+<!-- <div *ngIf="stockList.length > 0">
     <h3>Danh sách cổ phiếu:</h3>
     <ul>
       <li *ngFor="let stock of stockList">
         {{stock.name}} - {{stock.code}} - {{stock.price}}
       </li>
     </ul>
+</div> -->
+
+
+<div *ngIf="stockList.length > 0" class="stock-container">
+    <h3 class="stock-heading">Danh sách cổ phiếu:</h3>
+    <div class="stock-list-horizontal">
+      <div *ngFor="let stock of stockList" class="stock-item">
+        <div class="stock-name">{{stock.name}}</div>
+        <div class="stock-code">{{stock.code}}</div>
+        <div class="stock-price" [ngClass]="{'price-up': stock.price > 0, 'price-down': stock.price < 0}">
+          {{stock.price | number:'1.2-2'}}
+        </div>
+      </div>
+    </div>
 </div>

@@ -17,7 +17,7 @@
     border-radius: 4px;
 }
 
-.form-checkbox{
+.form-checkbox {
     margin-bottom: 15px;
 }
 
@@ -69,6 +69,7 @@
 .invalid-code {
     background-color: pink;
 }
+
 .valid-code {
     background-color: rgb(58, 153, 58);
 }
@@ -76,6 +77,7 @@
 .invalid-price {
     background-color: pink;
 }
+
 .valid-price {
     background-color: rgb(58, 153, 58);
 }
@@ -85,3 +87,90 @@
     font-size: 14px;
     margin-top: 5px;
 }
+
+
+
+// CSS List 
+.stock-container {
+    font-family: Arial, sans-serif;
+    max-width: 945px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+  }
+  
+  .stock-heading {
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .stock-list-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .stock-item {
+    flex: 0 0 calc(33.333% - 15px); /* 3 items per row with gap */
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .stock-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .stock-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .stock-code {
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .stock-price {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .price-up {
+    color: #22c55e;
+  }
+  
+  .price-down {
+    color: #ef4444;
+  }
+  
+  .stock-change {
+    font-size: 0.85em;
+    margin-left: 5px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .stock-item {
+      flex: 0 0 calc(50% - 15px); /* 2 items per row on tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stock-item {
+      flex: 0 0 100%; /* 1 item per row on mobile */
+    }
+  }

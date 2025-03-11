@@ -20,7 +20,7 @@ export class CreateStockComponent {
       name: [null, [Validators.required, Validators.minLength(6)]],
       code: ["", [Validators.required, Validators.minLength(1)]],
       price: [0, [Validators.required, Validators.min(0)]],
-      previousPrice: [0, [Validators.required]],
+      // previousPrice: [0, [Validators.required]],
       exchange: ["", Validators.required]
     });
   }
@@ -31,8 +31,6 @@ export class CreateStockComponent {
       name: 'Apple Inc.',
       code: 'AAPL',
       price: 150,
-      previousPrice: 100,
-      exchange: 'NASDAQ'
     };
   
     // Điền dữ liệu vào form
@@ -43,8 +41,6 @@ export class CreateStockComponent {
       name: stockData.name,
       code: stockData.code,
       price: stockData.price,
-     // previousPrice: stockData.previousPrice,
-     // exchange: stockData.exchange
     });
   }
 
