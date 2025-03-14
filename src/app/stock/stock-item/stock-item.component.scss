@@ -1,7 +1,15 @@
 .stock-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Chia thành 5 cột bằng nhau */
+  gap: 10px; /* Khoảng cách giữa các item */
+}
+
+.stock-item {
+  background: #f6f6f6;
+  padding: 15px;
+  text-align: center;
   border: 1px solid black;
-  border-radius: 5px;
-  display: inline-block;
+  border-radius: 8px;
   padding: 10px;
 }
 

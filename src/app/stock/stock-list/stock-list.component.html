@@ -1,0 +1,13 @@
+<h2 class="stock-heading">Danh sách cổ phiếu:</h2>
+<div class="stock-list">
+    <div *ngIf="stocks.length > 0" class="stock-container">
+        <h3 class="stock-heading">Danh sách cổ phiếu:</h3>
+        <div class="stock-list-horizontal">
+            <div *ngFor="let stock of stocks" class="stock-item">
+                <div class="stock-name">{{stock.name}}</div>
+                <div class="stock-code">{{stock.code}}</div>
+                <div class="stock-price">{{stock.price}}</div>
+            </div>
+        </div>
+    </div>
+</div>

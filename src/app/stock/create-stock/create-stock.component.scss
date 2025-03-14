@@ -2,175 +2,88 @@
 
 /* Style cho container của form */
 .stock-form {
-    max-width: 400px;
-    padding: 20px;
+  max-width: 400px;
+  padding: 20px;
 }
 
 
 
 /* Style cho các input */
 .form-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .form-checkbox {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 /* Style cho select */
 .form-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 /* Style cho nút button */
 .form-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 /* Hiệu ứng khi hover vào button */
 .form-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Hiệu ứng khi focus vào input hoặc select */
 .form-input:focus,
 .form-select:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .valid-name {
-    background-color: rgb(58, 153, 58);
+  background-color: rgb(58, 153, 58);
 }
 
 .invalid-name {
-    background-color: pink;
+  background-color: pink;
 }
 
 .invalid-code {
-    background-color: pink;
+  background-color: pink;
 }
 
 .valid-code {
-    background-color: rgb(58, 153, 58);
+  background-color: rgb(58, 153, 58);
 }
 
 .invalid-price {
-    background-color: pink;
+  background-color: pink;
 }
 
 .valid-price {
-    background-color: rgb(58, 153, 58);
+  background-color: rgb(58, 153, 58);
 }
 
 .error-msg {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
-
-
-
-// CSS List 
-.stock-container {
-    font-family: Arial, sans-serif;
-    max-width: 945px;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: #fff;
-  }
-  
-  .stock-heading {
-    color: #333;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .stock-list-horizontal {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .stock-item {
-    flex: 0 0 calc(33.333% - 15px); /* 3 items per row with gap */
-    padding: 15px;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .stock-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  
-  .stock-name {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .stock-code {
-    color: #666;
-    margin-bottom: 8px;
-  }
-  
-  .stock-price {
-    font-weight: bold;
-    font-size: 1.2em;
-  }
-  
-  .price-up {
-    color: #22c55e;
-  }
-  
-  .price-down {
-    color: #ef4444;
-  }
-  
-  .stock-change {
-    font-size: 0.85em;
-    margin-left: 5px;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .stock-item {
-      flex: 0 0 calc(50% - 15px); /* 2 items per row on tablets */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .stock-item {
-      flex: 0 0 100%; /* 1 item per row on mobile */
-    }
-  }

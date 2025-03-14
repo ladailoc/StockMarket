@@ -1,0 +1,88 @@
+// CSS List 
+.stock-container {
+    font-family: Arial, sans-serif;
+    max-width: 945px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f6f6f6;
+}
+
+.stock-heading {
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.stock-list-horizontal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cột */
+    gap: 15px;
+    /* Khoảng cách giữa các item */
+}
+
+.stock-item {
+    background: linear-gradient(135deg, #fceabb 0%, #b9ad90 100%);
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.stock-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 6px 6px 20px rgba(243, 156, 18, 0.5);
+}
+
+/* Màu sắc cho từng phần */
+.stock-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.stock-code {
+    font-size: 14px;
+    font-weight: bold;
+    color: #34495e;
+    background: rgba(255, 255, 255, 0.6);
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+/* Hiển thị giá cổ phiếu */
+.stock-price {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 8px;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.stock-change {
+    font-size: 0.85em;
+    margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .stock-list-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cột trên màn hình nhỏ */
+    }
+}
+
+@media (max-width: 480px) {
+    .stock-list-horizontal {
+        grid-template-columns: repeat(1, 1fr);
+        /* 1 cột trên màn hình rất nhỏ */
+    }
+}

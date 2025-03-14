@@ -2,30 +2,19 @@
 <div class="stock-form">
     <h2>Create Stock Form</h2>
     <form [formGroup]="stockForm" (ngSubmit)="showStockInfo()">
-        <input type="text" 
-                placeholder="Stock Name" 
-                [(ngModel)]="stock.name" 
-                class="form-input" 
-                [ngClass]="{
+        <input type="text" placeholder="Stock Name" [(ngModel)]="stock.name" class="form-input" [ngClass]="{
                     'valid-name': !stockForm.get('name')?.invalid,
-                    'invalid-name': stockForm.get('name')?.invalid}"
-                formControlName = "name">
+                    'invalid-name': stockForm.get('name')?.invalid}" formControlName="name">
 
         <!-- Check valid name-->
         <div *ngIf="stockForm.get('name')?.invalid && 
-                (stockForm.get('name')?.dirty || stockForm.get('name')?.touched)" 
-            class="error-msg">
+                (stockForm.get('name')?.dirty || stockForm.get('name')?.touched)" class="error-msg">
             Name phải có độ dài lớn hơn 6
         </div>
 
-        <input type="text" 
-                placeholder="Stock Code" 
-                [(ngModel)]="stock.code" 
-                class="form-input" 
-                [ngClass]="{
+        <input type="text" placeholder="Stock Code" [(ngModel)]="stock.code" class="form-input" [ngClass]="{
                     'valid-code': stockForm.get('code')?.invalid,
-                    'invalid-code': !stockForm.get('code')?.invalid}"
-                formControlName = "code">
+                    'invalid-code': !stockForm.get('code')?.invalid}" formControlName="code">
         <br>
 
         <!-- Check valid code -->
@@ -36,31 +25,33 @@
             </span>
         </div>
 
-        <input type="text" 
-            placeholder="Stock Price" 
-            [(ngModel)]="stock.price" 
-            class="form-input" 
-            [ngClass]="{
+        <input type="text" placeholder="Stock Price" [(ngModel)]="stock.price" class="form-input" [ngClass]="{
                 'valid-price': !stockForm.get('price')?.touched,
-                'invalid-price': stockForm.get('price')?.touched}"
-            formControlName = "price">
-            <br>
+                'invalid-price': stockForm.get('price')?.touched}" formControlName="price">
+        <br>
+
         <div *ngIf="stockForm.get('price')?.invalid && 
             (stockForm.get('price')?.dirty || stockForm.get('price')?.touched)">
             <span *ngIf="stockForm.get('price')?.errors?.['required']" class="error-msg">
                 Stock price is required
             </span>
         </div>
+
         <select class="form-select" formControlName="exchange">
             <option value="ABC">ABC</option>
             <option value="XYZ">XYZ</option>
         </select>
+
         <br>
+
         <input type="checkbox" name="" class="form-checkbox"> I confirm that the above details are correct<br>
-        <button class="form-button">Create Stock</button>
+        
+        <button class="form-button">Submit</button>
         <br><br>
+        
         <button class="form-button" (click)="loadStockServer()">Load from Server</button>
         <br><br>
+        
         <button class="form-button" (click)="createStock()">Create</button>
     </form>
 </div>
@@ -68,29 +59,4 @@
 <div *ngIf="isShowStockInfo">
     <p><strong>Form Control value: {{stockForm.value | json}}</strong></p>
     <p><strong>Form Control status: {{stockForm.status | json}}</strong></p>
-</div>
-
-
-
-<!-- <div *ngIf="stockList.length > 0">
-    <h3>Danh sách cổ phiếu:</h3>
-    <ul>
-      <li *ngFor="let stock of stockList">
-        {{stock.name}} - {{stock.code}} - {{stock.price}}
-      </li>
-    </ul>
-</div> -->
-
-
-<div *ngIf="stockList.length > 0" class="stock-container">
-    <h3 class="stock-heading">Danh sách cổ phiếu:</h3>
-    <div class="stock-list-horizontal">
-      <div *ngFor="let stock of stockList" class="stock-item">
-        <div class="stock-name">{{stock.name}}</div>
-        <div class="stock-code">{{stock.code}}</div>
-        <div class="stock-price" [ngClass]="{'price-up': stock.price > 0, 'price-down': stock.price < 0}">
-          {{stock.price | number:'1.2-2'}}
-        </div>
-      </div>
-    </div>
 </div>

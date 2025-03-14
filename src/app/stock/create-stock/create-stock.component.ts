@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from '../../model/stock';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { StockService } from '../../services/stock.service';
 
 @Component({
   selector: 'app-create-stock',
@@ -8,10 +9,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './create-stock.component.html',
   styleUrl: './create-stock.component.scss'
 })
-export class CreateStockComponent {
-  stockList: any[] = [];
+export class CreateStockComponent implements OnInit {
   public stockForm!: FormGroup;
-  constructor(private fb : FormBuilder) {
+  constructor(private fb : FormBuilder, private _stockService: StockService) {
       this.createForm();
   }
   
@@ -46,17 +46,14 @@ export class CreateStockComponent {
 
   createStock(): any {
     if (this.stockForm.valid) {
-      // Lấy dữ liệu từ form
       const newStock = this.stockForm.value;
-      // Thêm cổ phiếu mới vào danh sách
-      this.stockList.push(newStock);
+      this._stockService.addStock(new Stock(newStock.name, newStock.code, newStock.price, 0, newStock.exchange));
+      console.log('Form is valid');
     } else {
       console.log('Form is invalid');
     }
   }
 
-
-  
   public stock!: Stock;
   
   ngOnInit(): void {
