@@ -1,53 +1,88 @@
-/* app.component.css */
-
-/* Style cho container của form */
-.stock-form {
-  max-width: 400px;
-  padding: 20px;
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
 }
 
+.stock-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f7f5e8;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
+h2 {
+  color: #395f18; /* Màu xanh lá cây đậm */
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
 
-/* Style cho các input */
-.form-input {
+/* Form input styles */
+.form-input, .form-select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: #537d2e; /* Màu xanh lá cây nhạt */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(83, 125, 46, 0.1);
 }
 
 .form-checkbox {
-  margin-bottom: 15px;
+  margin: 20px 0;
 }
 
-/* Style cho select */
-.form-select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  cursor: pointer;
-}
 
-/* Style cho nút button */
+/* Button styles */
+/* General button styles */
 .form-button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  padding: 12px 20px;
   font-size: 16px;
+  font-weight: 600;
+  color: #fef6c7;
+  background: linear-gradient(45deg, #395f18, #537d2e);
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
-/* Hiệu ứng khi hover vào button */
+/* Hover effect */
 .form-button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(45deg, #2e4d12, #466b25); /* Gradient tối hơn khi hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); /* Nâng button lên một chút */
+}
+
+/* Active effect */
+.form-button:active {
+  background: linear-gradient(45deg, #233d0e, #395f18); /* Gradient tối hơn khi nhấn */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(0); /* Đưa button về vị trí ban đầu */
+}
+
+/* Focus effect */
+.form-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(57, 95, 24, 0.5); /* Hiệu ứng glow khi focus */
 }
 
 /* Hiệu ứng khi focus vào input hoặc select */
@@ -83,7 +118,14 @@
 }
 
 .error-msg {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
+  color: #d9534f;
+  font-size: 0.875em;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .stock-form {
+      width: 90%;
+      margin: 10px auto;
+  }
 }

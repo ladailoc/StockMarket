@@ -1,8 +1,7 @@
-<!-- app.component.html -->
 <div class="stock-form">
     <h2>Create Stock Form</h2>
-    <form [formGroup]="stockForm" (ngSubmit)="showStockInfo()">
-        <input type="text" placeholder="Stock Name" [(ngModel)]="stock.name" class="form-input" [ngClass]="{
+    <form [formGroup]="stockForm">
+        <input type="text" placeholder="Stock Name" class="form-input" [ngClass]="{
                     'valid-name': !stockForm.get('name')?.invalid,
                     'invalid-name': stockForm.get('name')?.invalid}" formControlName="name">
 
@@ -12,7 +11,7 @@
             Name phải có độ dài lớn hơn 6
         </div>
 
-        <input type="text" placeholder="Stock Code" [(ngModel)]="stock.code" class="form-input" [ngClass]="{
+        <input type="text" placeholder="Stock Code" class="form-input" [ngClass]="{
                     'valid-code': stockForm.get('code')?.invalid,
                     'invalid-code': !stockForm.get('code')?.invalid}" formControlName="code">
         <br>
@@ -25,7 +24,7 @@
             </span>
         </div>
 
-        <input type="text" placeholder="Stock Price" [(ngModel)]="stock.price" class="form-input" [ngClass]="{
+        <input type="text" placeholder="Stock Price" class="form-input" [ngClass]="{
                 'valid-price': !stockForm.get('price')?.touched,
                 'invalid-price': stockForm.get('price')?.touched}" formControlName="price">
         <br>
@@ -44,9 +43,9 @@
 
         <br>
 
-        <input type="checkbox" name="" class="form-checkbox"> I confirm that the above details are correct<br>
+        <input type="checkbox" name="" class="form-checkbox" formControlName="confirmed"> I confirm that the above details are correct<br>
         
-        <button class="form-button">Submit</button>
+        <button class="form-button" (click)="showStockInfo()">Submit</button>
         <br><br>
         
         <button class="form-button" (click)="loadStockServer()">Load from Server</button>

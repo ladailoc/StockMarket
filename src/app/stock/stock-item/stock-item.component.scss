@@ -1,33 +1,60 @@
-.stock-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Chia thành 5 cột bằng nhau */
-  gap: 10px; /* Khoảng cách giữa các item */
+.stock-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fef6c7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
 }
 
-.stock-item {
-  background: #f6f6f6;
-  padding: 15px;
-  text-align: center;
-  border: 1px solid black;
+.stock-code {
+  font-size: 14px;
+  font-weight: bold;
+  color: #34495e;
+  background: rgba(255, 255, 255, 0.6);
+  display: inline-block;
+  padding: 4px 10px;
   border-radius: 8px;
-  padding: 10px;
+  margin-bottom: 12px;
 }
 
+.stock-price {
+  color: rgba(249, 249, 249, 0.795);;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 8px;
+  display: inline-block;
+  min-width: 80px;
+}
+
+
+/* Màu sắc cho giá */
 .positive {
-  color: green;
+  color: #0f9d58;
+  // background: #e8f5e9;
 }
 
 .negative {
-  color: red;
+  color: #d32f2f;
+  // background: #ffebee;
 }
 
-.price {
-  text-align: center;
+/* Nút Favorite */
+button {
+  padding: 8px 16px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.stock-container .item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+// button:hover {
+//   background-color: #0056b3;
+// }
+
+button:disabled {
+  background: #474747;
 }

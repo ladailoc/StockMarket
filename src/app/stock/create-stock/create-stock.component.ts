@@ -9,19 +9,20 @@ import { StockService } from '../../services/stock.service';
   templateUrl: './create-stock.component.html',
   styleUrl: './create-stock.component.scss'
 })
-export class CreateStockComponent implements OnInit {
+export class CreateStockComponent {
   public stockForm!: FormGroup;
-  constructor(private fb : FormBuilder, private _stockService: StockService) {
-      this.createForm();
+  constructor(private fb: FormBuilder, private _stockService: StockService) {
+    this.createForm();
   }
-  
+
   createForm(): void {
     this.stockForm = this.fb.group({
       name: [null, [Validators.required, Validators.minLength(6)]],
       code: ["", [Validators.required, Validators.minLength(1)]],
       price: [0, [Validators.required, Validators.min(0)]],
       // previousPrice: [0, [Validators.required]],
-      exchange: ["", Validators.required]
+      exchange: ["", Validators.required],
+      confirmed: [false, Validators.requiredTrue]
     });
   }
 
@@ -32,16 +33,21 @@ export class CreateStockComponent implements OnInit {
       code: 'AAPL',
       price: 150,
     };
-  
+
     // Điền dữ liệu vào form
     this.patchStockForm(stockData);
+    console.log("StockForm Value:", this.stockForm.value);
+    console.log("isShowStockInfo:", this.isShowStockInfo);
+
   }
-  patchStockForm(stockData: any){
+  patchStockForm(stockData: any) {
     this.stockForm.patchValue({
       name: stockData.name,
       code: stockData.code,
-      price: stockData.price,
+      price: stockData.price
     });
+    console.log("Sau khi patch form - isShowStockInfo:", this.isShowStockInfo);
+
   }
 
   createStock(): any {
@@ -54,14 +60,9 @@ export class CreateStockComponent implements OnInit {
     }
   }
 
-  public stock!: Stock;
-  
-  ngOnInit(): void {
-    this.stock = new Stock("", "", 0, 0, "");
-  }
-
   isShowStockInfo = false;
   showStockInfo(): void {
     this.isShowStockInfo = true;
+    console.log("Đã gọi showStockInfo - isShowStockInfo:", this.isShowStockInfo);
   }
 }

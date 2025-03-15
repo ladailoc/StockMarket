@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   login(){
     if (this.username === 'admin' && this.password === '123'){
       this.errorMessage = '';
-      this.router.navigate(['/stock/stock-item']);
+      this.router.navigate(['/home']);
     } else {
       this.errorMessage = 'Tên đăng nhập hoặc mật khẩu không đúng!';
     }

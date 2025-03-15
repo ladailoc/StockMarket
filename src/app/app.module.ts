@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StockItemComponent } from './stock/stock-item/stock-item.component';
 import { CreateStockComponent } from './stock/create-stock/create-stock.component';
 import { StockListComponent } from './stock/stock-list/stock-list.component';
+import { HomeComponent } from './home/home.component';
+import { StockService } from './services/stock.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { StockListComponent } from './stock/stock-list/stock-list.component';
     StockItemComponent,
     CreateStockComponent,
     StockListComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { StockListComponent } from './stock/stock-list/stock-list.component';
     ReactiveFormsModule
   ],
   providers: [
-    
+    StockService
   ],
   bootstrap: [AppComponent]
 })

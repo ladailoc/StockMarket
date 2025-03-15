@@ -8,16 +8,12 @@ import { Stock } from '../../model/stock';
   templateUrl: './stock-item.component.html',
   styleUrl: './stock-item.component.scss'
 })
-export class StockItemComponent implements OnInit {
-  stocks: Stock[] = [];
+export class StockItemComponent {
+  @Input() stock!: Stock;
 
   constructor(private _stockService: StockService) {}
 
-  ngOnInit() {
-    this.stocks = this._stockService.getStocks();
-  }
-  
-  toggleFavorite(code: string) {
-    this._stockService.toggleFavorite(code);
+  toggleFavorite(stock: Stock){
+    this._stockService.toggleFavorite(stock);
   }
 }

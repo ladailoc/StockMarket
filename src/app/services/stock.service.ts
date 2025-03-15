@@ -23,8 +23,8 @@ export class StockService {
     return this.stocks;
   }
 
-  toggleFavorite(code: string) {
-    const stock = this.stocks.find(stock => stock.code === code);
+  toggleFavorite(stock: Stock) {
+    // const stock = this.stocks.find(stock => stock.code === code);
     if (stock) {
       stock.favorite = !stock.favorite;
     }

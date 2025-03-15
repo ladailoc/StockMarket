@@ -15,5 +15,6 @@ export class StockListComponent implements OnInit {
 
   ngOnInit() {
     this.stocks = this._stockService.getStocks();
+    console.log("Stocks:", this.stocks);
   }
 }
