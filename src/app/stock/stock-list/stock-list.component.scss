@@ -32,11 +32,6 @@
     border-radius: 8px;
 }
 
-.stock-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 6px 6px 20px rgba(243, 156, 18, 0.5);
-}
-
 /* Màu sắc cho từng phần */
 .stock-name {
     font-size: 20px;
@@ -60,7 +55,8 @@
 
 /* Hiển thị giá cổ phiếu */
 .stock-price {
-    color: rgba(249, 249, 249, 0.795);;
+    color: rgba(249, 249, 249, 0.795);
+    ;
     font-size: 22px;
     font-weight: bold;
     padding: 8px;
@@ -72,6 +68,41 @@
 .stock-change {
     font-size: 0.85em;
     margin-left: 5px;
+}
+
+
+// input
+/* Ô tìm kiếm */
+.input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* Nút tìm kiếm */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 @media (max-width: 768px) {

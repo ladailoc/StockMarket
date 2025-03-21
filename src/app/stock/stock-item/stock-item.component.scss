@@ -1,3 +1,4 @@
+// Stock Item Component
 .stock-name {
   font-size: 20px;
   font-weight: bold;
@@ -19,7 +20,8 @@
 }
 
 .stock-price {
-  color: rgba(249, 249, 249, 0.795);;
+  color: rgba(249, 249, 249, 0.795);
+  ;
   font-size: 22px;
   font-weight: bold;
   padding: 8px;
@@ -51,10 +53,166 @@ button {
   transition: background-color 0.3s ease;
 }
 
-// button:hover {
-//   background-color: #0056b3;
-// }
+button:hover {
+  background-color: #393a3a;
+}
 
 button:disabled {
-  background: #474747;
+  background: #707070;
+  color: #c3c1c1;
+}
+
+// BTN FAV
+.btn-fav {
+  width: 200px;
+  height: 40px;
+  padding: 0px 15px;
+  background-color: rgb(66, 66, 66);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+  transition-duration: .2s;
+}
+
+.btn-fav:hover {
+  background-color: rgb(77, 77, 77);
+  transition-duration: .2s;
+}
+
+.btn-fav:active {
+  transform: translate(1px, 1px);
+  transition-duration: .2s;
+}
+
+
+// BTN ACTION
+.stock-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-edit,
+.btn-delete {
+  border-radius: 15px;
+  font-size: 15px;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-edit::before,
+.btn-delete::before {
+  content: '';
+  width: 0;
+  height: 3em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.btn-edit:hover::before,
+.btn-delete:hover::before {
+  width: 9em;
+}
+
+// Form EDIT
+/* Bố cục chung của form */
+form {
+  max-width: 320px; /* Thu nhỏ form */
+  background: linear-gradient(135deg, #ffffff, #f1f1f1); /* Nền nhẹ nhàng */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Poppins', sans-serif;
+  margin: 0 auto; /* Căn giữa */
+}
+
+/* Căn chỉnh nhãn và ô nhập */
+form label {
+  font-weight: 600;
+  color: #444;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Ô nhập liệu */
+form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s;
+  box-sizing: border-box; /* Đảm bảo không bị lệch */
+}
+
+/* Hiệu ứng khi focus */
+form input:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* Bố cục nhóm checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Căn chỉnh checkbox */
+.checkbox-group input {
+  width: auto;
+  margin: 0;
+}
+
+/* Khu vực nút bấm */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Các nút */
+form button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+/* Nút Lưu */
+form button[type="submit"] {
+  background: #28a745;
+  color: white;
+}
+
+form button[type="submit"]:hover {
+  background: #218838;
+}
+
+/* Nút Hủy */
+form button[type="button"] {
+  background: #dc3545;
+  color: white;
+}
+
+form button[type="button"]:hover {
+  background: #c82333;
 }

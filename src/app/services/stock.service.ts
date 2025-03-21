@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Stock } from '../model/stock';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,36 +18,39 @@ export class StockService {
     new Stock('Paypal', 'PYPL', 250, 300, 'NASDAQ'),
     new Stock('Shopify', 'SHOP', 1500, 1600, 'NASDAQ')
   ];
+
   constructor() { }
 
-  getStocks(): any[] {
-    return this.stocks;
-  }
-
   toggleFavorite(stock: Stock) {
-    // const stock = this.stocks.find(stock => stock.code === code);
     if (stock) {
       stock.favorite = !stock.favorite;
     }
   }
 
-
-  getStock(code: string) {
-    return this.stocks.find(stock => stock.code === code);
+  getStocks() {
+    return this.stocks;
   }
 
-  addStock(stock: Stock) {
-    this.stocks.push(stock);
+  addStock(newStock: Stock) {
+    this.stocks.push(newStock);
   }
 
-  updateStock(code: string, stock: Stock) {
-    const index = this.stocks.findIndex(stock => stock.code === code);
+  getStockByCode(code: string) {
+    return this.stocks.filter(stock => stock.code.toLowerCase() === code);
+  }
+
+  getStockByName(name: string) {
+    return this.stocks.filter(stock => stock.name.toLowerCase() === name);
+  }
+
+  updateStock(stockCode: string, updatedStock: Stock) {
+    const index = this.stocks.findIndex(stock => stock.code === stockCode);
     if (index !== -1) {
-      this.stocks[index] = stock;
+      this.stocks[index] = updatedStock;
     }
   }
 
-  deleteStock(code: string) {
-    this.stocks = this.stocks.filter(stock => stock.code !== code);
+  deleteStock(stockCode: string) {
+    this.stocks = this.stocks.filter(stock => stock.code !== stockCode);
   }
 }

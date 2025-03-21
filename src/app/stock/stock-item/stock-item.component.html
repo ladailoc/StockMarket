@@ -1,7 +1,38 @@
-<div>
-    <div class="stock-name">{{stock.name}}</div>
-    <div class="stock-code">{{stock.code}}</div>
-    <div class="stock-price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">{{stock.price}}</div>
+<div *ngIf="!editing">
+    <div class="stock-name">{{ stock.name }}</div>
+    <div class="stock-code">{{ stock.code }}</div>
+    <div class="stock-price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">
+        {{ stock.price }}
+    </div>
+
+    <!-- <button (click)="toggleFavorite(stock)" [disabled]="stock.favorite">Add to Favorite</button> -->
+    <button (click)="toggleFavorite(stock)" [disabled]="stock.favorite" class="btn-fav">Add to Favorite</button>
+      
+    <div class="stock-actions">
+        <button class="btn-edit" (click)="editStock(stock)">Edit</button>
+        <button class="btn-delete" (click)="deleteStock(stock)">Delete</button>
+    </div>
 </div>
 
-<button (click)="toggleFavorite(stock)" [disabled]="stock.favorite">Add to Favorite</button>
+<!-- Form Edit -->
+<form *ngIf="editing" [formGroup]="editStockForm">
+    <label>Tên:</label>
+    <input type="text" formControlName="name" />
+
+    <label>Giá:</label>
+    <input type="number" formControlName="price" />
+
+    <label>Giá trước đó:</label>
+    <input type="number" formControlName="previousPrice" />
+
+    <div class="checkbox-group">
+        <label>Yêu thích:</label>
+        <input type="checkbox" formControlName="favorite" />
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" (click)="saveStock()">Lưu</button>
+        <button type="button" (click)="editStock(stock)">Hủy</button>
+    </div>
+</form>
+

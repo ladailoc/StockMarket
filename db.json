@@ -1,0 +1,28 @@
+{
+  "stocks": [
+    {
+      "id": 1,
+      "code": "AAPL",
+      "name": "Apple",
+      "price": 150
+    },
+    {
+      "id": 2,
+      "code": "GOOGL",
+      "name": "Google",
+      "price": 2800
+    },
+    {
+      "id": 3,
+      "code": "MSFT",
+      "name": "Microsoft",
+      "price": 310
+    },
+    {
+      "id": 4,
+      "code": "AAPL",
+      "name": "Apple",
+      "price": 155
+    }
+  ]
+}

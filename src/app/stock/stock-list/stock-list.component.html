@@ -1,4 +1,6 @@
 <h2 class="stock-heading">Danh sách cổ phiếu:</h2>
+<input #codeSearch placeholder="Nhập tên tìm kiếm" type="text" name="text" class="input">
+<button type="submit" (click)="searchStockByCode(codeSearch.value)">Tìm kiếm</button>
 <div *ngIf="stocks.length > 0" class="stock-container">
     <div class="stock-list-horizontal">
         <div *ngFor="let stock of stocks" class="stock-item">
