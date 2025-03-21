@@ -32,78 +32,49 @@
     border-radius: 8px;
 }
 
-/* Màu sắc cho từng phần */
-.stock-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #fef6c7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
-
-.stock-code {
-    font-size: 14px;
-    font-weight: bold;
-    color: #34495e;
-    background: rgba(255, 255, 255, 0.6);
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-/* Hiển thị giá cổ phiếu */
-.stock-price {
-    color: rgba(249, 249, 249, 0.795);
-    ;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 8px;
-    border-radius: 8px;
-    display: inline-block;
-    min-width: 80px;
-}
-
-.stock-change {
-    font-size: 0.85em;
-    margin-left: 5px;
-}
-
-
-// input
-/* Ô tìm kiếm */
 .input {
-    width: 300px;
-    padding: 10px;
+    width: 280px;
+    padding: 12px;
+    border: 2px solid #ff7f50;
+    border-radius: 10px;
     font-size: 16px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
     outline: none;
+    background: #fffaf0;
+    color: #333;
     transition: all 0.3s ease-in-out;
 }
 
 .input:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+    border-color: #ff4500;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    background: #fff5e1;
 }
 
-/* Nút tìm kiếm */
 button {
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    padding: 12px 18px;
     margin-left: 10px;
+    background: linear-gradient(135deg, #ff7f50, #ff4500);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 4px 10px rgba(255, 69, 0, 0.3);
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #ff4500, #ff7f50);
+    transform: scale(1.05);
+    box-shadow: 2px 6px 12px rgba(255, 69, 0, 0.5);
 }
+
+button:active {
+    transform: scale(0.95);
+}
+
+
 
 @media (max-width: 768px) {
     .stock-list-horizontal {

@@ -41,8 +41,8 @@ export class StockItemComponent {
       this.stock.name = this.editStockForm.value.name;
       this.stock.price = this.editStockForm.value.price;
       this.stock.previousPrice = this.editStockForm.value.previousPrice;
-
       this.stock.favorite = this.editStockForm.value.favorite;
+
       this._stockList.updatedStock(this.stock);
       this.editing = false;
     }
