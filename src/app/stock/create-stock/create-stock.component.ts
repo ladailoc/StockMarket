@@ -50,11 +50,14 @@ export class CreateStockComponent {
 
   }
 
-  createStock(): any {
+  createStock() {
     if (this.stockForm.valid) {
-      const newStock = this.stockForm.value;
-      this._stockService.addStock(new Stock(newStock.name, newStock.code, newStock.price, 0, newStock.exchange));
-      console.log('Form is valid');
+      const stockData = this.stockForm.value;
+      const newStock = new Stock(stockData.name, stockData.code, stockData.price, 0, stockData.exchange);
+      this._stockService.addStock(newStock).subscribe({
+        next: () => console.log('Stock added successfully'),
+        error: (err) => console.error('Error adding stock:', err)
+      });
     } else {
       console.log('Form is invalid');
     }

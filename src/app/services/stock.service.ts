@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Stock } from '../model/stock';
-import { BehaviorSubject } from 'rxjs';
-
+import { Observable } from 'rxjs';
+import { of as createObservable } from 'rxjs';
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class StockService {
-  private stocks: any[] = [
+  private stocks: Stock[] = [
     new Stock('Apple', 'AAPL', 150, 200, 'NASDAQ'),
     new Stock('Google', 'GOOGL', 2500, 2200, 'NASDAQ'),
     new Stock('Microsoft', 'MSFT', 320, 300, 'NASDAQ'),
@@ -27,30 +28,41 @@ export class StockService {
     }
   }
 
-  getStocks() {
-    return this.stocks;
+  getStocks(): Observable<Stock[]> {
+    return createObservable(this.stocks);
   }
 
-  addStock(newStock: Stock) {
+  addStock(newStock: Stock): Observable<any> {
+    let foundStock = this.stocks.find(stock => stock.code === newStock.code);
+    if (foundStock) {
+      return throwError(() => new Error('Stock with code ' + newStock.code + ' already exists'));
+    }
     this.stocks.push(newStock);
+    return createObservable({msg: 'Stock with code ' + newStock.code + ' added successfully'});
   }
 
-  getStockByCode(code: string) {
-    return this.stocks.filter(stock => stock.code.toLowerCase() === code);
+  getStockByCode(code: string): Observable<Stock[]> {
+    return createObservable(this.stocks.filter(stock => stock.code.toLowerCase() === code));
   }
 
-  getStockByName(name: string) {
-    return this.stocks.filter(stock => stock.name.toLowerCase() === name);
+  getStockByName(name: string): Observable<Stock[]> {
+    return createObservable(this.stocks.filter(stock => stock.name.toLowerCase() === name));
   }
 
-  updateStock(stockCode: string, updatedStock: Stock) {
-    const index = this.stocks.findIndex(stock => stock.code === stockCode);
+  updateStock(stockCode: string, updatedStock: Stock): Observable<any> {
+    let index = this.stocks.findIndex(stock => stock.code === stockCode);
     if (index !== -1) {
       this.stocks[index] = updatedStock;
+      return createObservable({msg: 'Stock with code ' + stockCode + ' updated successfully'});
     }
+    return throwError(() => new Error('Stock with code ' + stockCode + ' not found'));
   }
 
-  deleteStock(stockCode: string) {
+  deleteStock(stockCode: string): Observable<any> {
+    const lengthBeforeDelete = this.stocks.length;
     this.stocks = this.stocks.filter(stock => stock.code !== stockCode);
+    return this.stocks.length < lengthBeforeDelete 
+      ? createObservable({msg: 'Stock with code ' + stockCode + ' deleted successfully'}) 
+      : throwError(() => new Error('Stock with code ' + stockCode + ' not found')); 
   }
 }

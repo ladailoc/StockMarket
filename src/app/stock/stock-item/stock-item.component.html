@@ -1,4 +1,4 @@
-<div *ngIf="!editing">
+<div *ngIf="!editing && !viewing">
     <div class="stock-name">{{ stock.name }}</div>
     <div class="stock-code">{{ stock.code }}</div>
     <div class="stock-price" [class]="stock.isPositiveChange() ? 'positive' : 'negative'">
@@ -9,10 +9,33 @@
     <button (click)="toggleFavorite(stock)" [disabled]="stock.favorite" class="btn-fav">Add to Favorite</button>
       
     <div class="stock-actions">
+        <button class="btn-view" (click)="viewStock()">View</button>
         <button class="btn-edit" (click)="editStock(stock)">Edit</button>
         <button class="btn-delete" (click)="deleteStock(stock)">Delete</button>
     </div>
 </div>
+
+<!-- Form View -->
+<div *ngIf="viewing" class="view-form">
+    <h3>Chi tiết cổ phiếu</h3>
+    <label>Mã cổ phiếu:</label>
+    <p>{{ stock.code }}</p>
+
+    <label>Tên cổ phiếu:</label>
+    <p>{{ stock.name }}</p>
+
+    <label>Giá hiện tại:</label>
+    <p>{{ stock.price }}</p>
+
+    <label>Giá trước đó:</label>
+    <p>{{ stock.previousPrice }}</p>
+
+    <label>Yêu thích:</label>
+    <p>{{ stock.favorite ? 'Có' : 'Không' }}</p>
+
+    <button class="btn-close" (click)="closeView()">Đóng</button>
+</div>
+
 
 <!-- Form Edit -->
 <form *ngIf="editing" [formGroup]="editStockForm">
@@ -32,7 +55,7 @@
 
     <div class="form-actions">
         <button type="submit" (click)="saveStock()">Lưu</button>
-        <button type="button" (click)="editStock(stock)">Hủy</button>
+        <button type="button" (click)="closeEdit()">Hủy</button>
     </div>
 </form>
 

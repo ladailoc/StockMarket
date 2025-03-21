@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class StockItemComponent {
   @Input() stock!: Stock;
   editing = false;
+  viewing = false;
   editStockForm!: FormGroup;
 
   constructor(private _stockList: StockListComponent, private fb: FormBuilder) { }
@@ -29,9 +30,17 @@ export class StockItemComponent {
   toggleFavorite(stock: Stock) {
     this._stockList.toggleFavorite(stock);
   }
+  
+  viewStock() {
+    this.viewing = true;
+  }
+
+  closeView() {
+    this.viewing = false;
+  }
 
   editStock(stock: Stock) {
-    this.editing = !this.editing;
+    this.editing = true;
     if (this.editing) {
       this.createForm();
     }
@@ -48,6 +57,9 @@ export class StockItemComponent {
     }
   }
 
+  closeEdit() {
+    this.editing = false;
+  }
 
   deleteStock(stock: Stock) {
     this._stockList.deleteStock(stock);

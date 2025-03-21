@@ -95,7 +95,8 @@ button:disabled {
 }
 
 .btn-edit,
-.btn-delete {
+.btn-delete,
+.btn-view {
   border-radius: 15px;
   font-size: 15px;
   font-family: inherit;
@@ -106,7 +107,8 @@ button:disabled {
 }
 
 .btn-edit::before,
-.btn-delete::before {
+.btn-delete::before,
+.btn-view::before {
   content: '';
   width: 0;
   height: 3em;
@@ -120,7 +122,8 @@ button:disabled {
 }
 
 .btn-edit:hover::before,
-.btn-delete:hover::before {
+.btn-delete:hover::before,
+.btn-view:hover::before {
   width: 9em;
 }
 
@@ -215,4 +218,41 @@ form button[type="button"] {
 
 form button[type="button"]:hover {
   background: #c82333;
+}
+
+
+// FORM view
+.view-form {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.view-form h3 {
+  margin-bottom: 10px;
+}
+
+.view-form label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+.view-form p {
+  margin: 5px 0;
+}
+
+.btn-close {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-close:hover {
+  background-color: #c9302c;
 }

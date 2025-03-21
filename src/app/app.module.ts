@@ -10,6 +10,7 @@ import { CreateStockComponent } from './stock/create-stock/create-stock.componen
 import { StockListComponent } from './stock/stock-list/stock-list.component';
 import { HomeComponent } from './home/home.component';
 import { StockService } from './services/stock.service';
+import { ListViewStockComponent } from './stock/list-view-stock/list-view-stock.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { StockService } from './services/stock.service';
     CreateStockComponent,
     StockListComponent,
     HomeComponent,
+    ListViewStockComponent,
   ],
   imports: [
     BrowserModule,

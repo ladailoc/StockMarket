@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from '../../services/stock.service';
 import { Stock } from '../../model/stock';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-stock-list',
@@ -9,36 +10,31 @@ import { Stock } from '../../model/stock';
   styleUrl: './stock-list.component.scss'
 })
 export class StockListComponent implements OnInit {
-  stocks: any[] = [];
+  public stocks$!: Observable<Stock[]>;
 
   constructor(private _stockService: StockService) { }
 
   ngOnInit() {
     this.loadStocks();
-    console.log("Stocks:", this.stocks);
+    console.log("Stocks:", this.stocks$);
   }
 
   loadStocks() {
-    this.stocks = this._stockService.getStocks();
+    this.stocks$ = this._stockService.getStocks();
   }
 
   searchStockByCode(code: string) {
-    if (code.length === 0) {
-      this.loadStocks();
-    }
-    else {
-      this.stocks = this._stockService.getStockByCode(code.toLowerCase());
-      // console.log("Stocks:", this.stocks);
-    }
+    code = code.trim().toLowerCase();
+    this.stocks$ = code.length === 0
+      ? this._stockService.getStocks()
+      : this._stockService.getStockByCode(code);
   }
 
   searchStockByName(name: string) {
-    if (name.length === 0) {
-      this.loadStocks();
-    }
-    else 
-      this.stocks = this._stockService.getStockByName(name.toLowerCase());
-    
+    name = name.trim().toLowerCase();
+    this.stocks$ = name.length === 0
+      ? this._stockService.getStocks()
+      : this._stockService.getStockByName(name);
   }
 
   toggleFavorite(stock: Stock) {
@@ -46,14 +42,19 @@ export class StockListComponent implements OnInit {
   }
 
   updatedStock(stock: Stock) {
-    this._stockService.updateStock(stock.code, stock);
+    this._stockService.updateStock(stock.code, stock).subscribe({
+      next: () => this.loadStocks(),
+      error: err => console.error('Error updating stock:', err)
+    });
   }
 
   deleteStock(stock: Stock) {
     const confirmDelete = confirm("Bạn có chắc muốn xóa cổ phiếu này không?");
     if (confirmDelete) {
-      this._stockService.deleteStock(stock.code);
-      this.loadStocks();
+      this._stockService.deleteStock(stock.code).subscribe({
+        next: () => this.loadStocks(),
+        error: err => console.error('Error deleting stock:', err)
+      });
     }
   }
 
