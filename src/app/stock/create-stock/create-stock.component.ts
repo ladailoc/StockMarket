@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stock } from '../../model/stock';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StockService } from '../../services/stock.service';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-create-stock',
@@ -11,7 +12,7 @@ import { StockService } from '../../services/stock.service';
 })
 export class CreateStockComponent {
   public stockForm!: FormGroup;
-  constructor(private fb: FormBuilder, private _stockService: StockService) {
+  constructor(private fb: FormBuilder, private _stockService: StockService, private httpService: HttpService) {
     this.createForm();
   }
 
@@ -54,8 +55,8 @@ export class CreateStockComponent {
     if (this.stockForm.valid) {
       const stockData = this.stockForm.value;
       const newStock = new Stock(stockData.name, stockData.code, stockData.price, 0, stockData.exchange);
-      this._stockService.addStock(newStock).subscribe({
-        next: () => console.log('Stock added successfully'),
+      this.httpService.addStock(newStock).subscribe({
+        next: () => this.httpService.getStocks(),
         error: (err) => console.error('Error adding stock:', err)
       });
     } else {

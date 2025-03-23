@@ -1,28 +1,61 @@
 {
   "stocks": [
     {
-      "id": 1,
-      "code": "AAPL",
       "name": "Apple",
-      "price": 150
+      "code": "AAPL",
+      "price": 120,
+      "previousPrice": 110,
+      "exchange": "NASDAQ",
+      "favorite": true,
+      "id": "1"
     },
     {
-      "id": 2,
-      "code": "GOOGL",
       "name": "Google",
-      "price": 2800
+      "code": "GOOGL",
+      "price": 11,
+      "previousPrice": 200,
+      "exchange": "NASDAQ",
+      "favorite": true,
+      "id": "2"
     },
     {
-      "id": 3,
+      "name": "Amazon",
+      "code": "AMZN",
+      "price": 3200,
+      "previousPrice": 3100,
+      "exchange": "NASDAQ",
+      "favorite": false,
+      "id": "3"
+    },
+    {
+      "id": "4",
       "code": "MSFT",
       "name": "Microsoft",
-      "price": 310
+      "price": 220,
+      "previousPrice": 210,
+      "exchange": "NASDAQ",
+      "favorite": false
     },
     {
-      "id": 4,
-      "code": "AAPL",
-      "name": "Apple",
-      "price": 155
+      "name": "Tesla",
+      "code": "TSLA",
+      "price": 7000,
+      "previousPrice": 600,
+      "exchange": "NASDAQ",
+      "favorite": true,
+      "id": "5"
+    },
+    {
+      "name": "Facebook",
+      "code": "FB",
+      "price": 300,
+      "previousPrice": 290,
+      "exchange": "NASDAQ",
+      "favorite": false,
+      "id": "6"
     }
-  ]
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

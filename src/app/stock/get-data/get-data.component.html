@@ -4,10 +4,12 @@
 <div class="search">
     <input #codeSearch placeholder="Nhập mã tìm kiếm" type="text" name="text" class="input">
     <button type="submit" (click)="searchStockByCode(codeSearch.value)">Tìm kiếm</button>
+    <!--  -->
+    <button class="btn-add" (click)="openModal(null , 'add')">+ Thêm cổ phiếu</button>
 </div>
 
 <!-- Hiển thị danh sách cổ phiếu -->
-<table *ngIf="stocks$ | async as stocks" class="stock-table">
+<table *ngIf="stocks" class="stock-table">
     <thead>
         <tr>
             <th>Mã CP</th>
@@ -18,11 +20,31 @@
             <th>Hành động</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="isSearch && stockSearch">
+        <tr>
+            <td>{{ stockSearch.code }}</td>
+            <td>{{ stockSearch.name }}</td>
+            <td
+                [class]="stockSearch.price > stockSearch.previousPrice ? 'positive' : stockSearch.price == stockSearch.previousPrice ? 'balance' : 'negative'">
+                {{ stockSearch.price }}
+            </td>
+            <td>{{ stockSearch.previousPrice }}</td>
+            <td>
+                <input type="checkbox" [checked]="stockSearch.favorite" (change)="toggleFavorite(stockSearch)">
+            </td>
+            <td class="actions">
+                <button class="btn-view" (click)="openModal(stockSearch, 'view')">Xem</button>
+                <button class="btn-edit" (click)="openModal(stockSearch, 'edit')">Sửa</button>
+                <button class="btn-delete" (click)="deleteStock(stockSearch)">Xóa</button>
+            </td>
+        </tr>
+    </tbody>
+    <tbody *ngIf="!isSearch">
         <tr *ngFor="let stock of stocks">
             <td>{{ stock.code }}</td>
             <td>{{ stock.name }}</td>
-            <td [class]="stock.isPositiveChange() ? 'positive': (stock.price === stock.previousPrice) ? 'balance' : 'negative'">
+            <td
+                [class]="stock.price > stock.previousPrice ? 'positive' : stock.price == stock.previousPrice ? 'balance' : 'negative'">
                 {{ stock.price }}
             </td>
             <td>{{ stock.previousPrice }}</td>
@@ -66,9 +88,37 @@
             <input type="number" formControlName="previousPrice">
 
             <label>Yêu thích:</label>
-            <input type="checkbox" formControlName="favorite">
+            <input type="checkbox" formControlName="favorite" [checked]="editStockForm.get('favorite')?.value"
+                (click)="toggleFavorite(selectedStock)">
 
             <button type="submit" (click)="saveStock()">Lưu</button>
         </form>
+        <!-- Form Add Stock -->
+        <div class="modal" *ngIf="modalMode === 'add'">
+            <div class="modal-content">
+                <span class="close" (click)="closeModal()">&times;</span>
+
+                <h3>Thêm cổ phiếu mới</h3>
+                <form [formGroup]="addStockForm">
+                    <label>Mã CP:</label>
+                    <input type="text" formControlName="code">
+
+                    <label>Tên CP:</label>
+                    <input type="text" formControlName="name">
+
+                    <label>Giá:</label>
+                    <input type="number" formControlName="price">
+
+                    <label>Giá trước đó:</label>
+                    <input type="number" formControlName="previousPrice">
+
+                    <label>Yêu thích:</label>
+                    <input type="checkbox" formControlName="favorite">
+
+                    <button type="submit" (click)="createStock()">Thêm</button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
