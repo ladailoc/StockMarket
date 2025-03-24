@@ -50,20 +50,21 @@ export class HttpService {
   toggleFavorite(stock: any) {
     stock.favorite = !stock.favorite;
     const url = `${this.REST_API_SERVER}/stocks/${stock.id}`;
-    return this.httpClient.put<any>(url, stock, this.httpOptions).pipe(
-      map((stock: any) => {
-        let stockObj = new Stock(
-          stock.name,
-          stock.code,
-          stock.price,
-          stock.previousPrice,
-          stock.exchange
-        );
-        stockObj.favorite = stock.favorite;
-        stockObj.id = stock.id;
-        return stockObj;
-      })
-    );
+    // return this.httpClient.put<any>(url, stock, this.httpOptions).pipe(
+    //   map((stock: any) => {
+    //     let stockObj = new Stock(
+    //       stock.name,
+    //       stock.code,
+    //       stock.price,
+    //       stock.previousPrice,
+    //       stock.exchange
+    //     );
+    //     stockObj.favorite = stock.favorite;
+    //     stockObj.id = stock.id;
+    //     return stockObj;
+    //   })
+    // );
+    return this.httpClient.put<any>(url, stock, this.httpOptions);
   }
 
   addStock(newStock: Stock): Observable<any> {

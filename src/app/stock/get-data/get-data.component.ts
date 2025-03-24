@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './get-data.component.scss'
 })
 export class GetDataComponent implements OnInit {
-  stocks!: any;
+  stocks!: Stock[];
   
   isModalOpen = false;
   modalMode: 'view' | 'edit' | 'add' | '' = '';
@@ -20,7 +20,8 @@ export class GetDataComponent implements OnInit {
   addStockForm!: FormGroup;
   newStock!: Stock;
   stockSearch!: any;
-  stockArray: any[] = [];
+  codeSearch!: string;
+  stockArray: Stock[] = [];
   isSearch = false;
   constructor(private httpService: HttpService, private fb: FormBuilder) { }
 
@@ -30,9 +31,21 @@ export class GetDataComponent implements OnInit {
 
   loadStocks() {
     this.httpService.getStocks().subscribe(res => {
-      this.stocks = res;
+      this.stocks = res.map((stock: Stock) => {
+        let stockObj = new Stock(
+          stock.name,
+          stock.code,
+          stock.price,
+          stock.previousPrice,
+          stock.exchange
+        );
+        stockObj.favorite = stock.favorite;
+        stockObj.id = stock.id;
+        return stockObj;
+      });
       this.stockArray = this.stocks
-      console.log('stock:', typeof this.stocks);
+      console.log('stocks:', this.stocks);
+      console.log('stocks:', typeof this.stockArray);
       
     });
   }
@@ -115,19 +128,12 @@ export class GetDataComponent implements OnInit {
     this.httpService.toggleFavorite(stock);  
   }
 
-  searchStockByCode(code: string) {
-    code = code.trim();
-    if (code === '') {
-      this.isSearch = false;
-      this.stockSearch = null;
-      this.loadStocks();
-      return;
-    }
-    this.isSearch = true;
-    const id = this.stockArray.find(stock => stock.code.toLowerCase() === code.toLowerCase())?.id;
-    this.httpService.getStockByCode(id).subscribe(res => {
-      this.stockSearch = res;
-      console.log('stockSearch:', res);
-    });
+  searchStockByCode() {
+    this.codeSearch = this.codeSearch.trim();
+    console.log('codeSearch:', this.codeSearch);
+    if (this.codeSearch === '') {
+      this.stockArray = this.stocks;
+    } else
+    this.stockArray = this.stocks.filter(stock => stock.code.toLowerCase().includes(this.codeSearch.toLowerCase()));
   }
 }
