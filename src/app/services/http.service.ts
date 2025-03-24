@@ -69,41 +69,42 @@ export class HttpService {
 
   addStock(newStock: Stock): Observable<any> {
     const url = `${this.REST_API_SERVER}/stocks`;
-    return this.httpClient.post<any>(url, newStock, this.httpOptions).pipe(
-      map((stock: any) => {
-        let stockObj = new Stock(
-          stock.name,
-          stock.code,
-          stock.price,
-          stock.previousPrice,
-          stock.exchange
-        );
-        stockObj.favorite = stock.favorite;
-        stockObj.id = stock.id;
-        return stockObj;
-      })
-    );
-    
+    // return this.httpClient.post<any>(url, newStock, this.httpOptions).pipe(
+    //   map((stock: any) => {
+    //     let stockObj = new Stock(
+    //       stock.name,
+    //       stock.code,
+    //       stock.price,
+    //       stock.previousPrice,
+    //       stock.exchange
+    //     );
+    //     stockObj.favorite = stock.favorite;
+    //     stockObj.id = stock.id;
+    //     return stockObj;
+    //   })
+    // );
+    return this.httpClient.post<any>(url, newStock, this.httpOptions);
   }
 
 
 
   updateStock(stock: any): Observable<any> {
     const url = `${this.REST_API_SERVER}/stocks/${stock.id}`;
-    return this.httpClient.put<any>(url, stock, this.httpOptions).pipe(
-      map((stock: any) => {
-        let stockObj = new Stock(
-          stock.name,
-          stock.code,
-          stock.price,
-          stock.previousPrice,
-          stock.exchange
-        );
-        stockObj.favorite = stock.favorite;
-        stockObj.id = stock.id;
-        return stockObj;
-      })
-    );
+    // return this.httpClient.put<any>(url, stock, this.httpOptions).pipe(
+    //   map((stock: any) => {
+    //     let stockObj = new Stock(
+    //       stock.name,
+    //       stock.code,
+    //       stock.price,
+    //       stock.previousPrice,
+    //       stock.exchange
+    //     );
+    //     stockObj.favorite = stock.favorite;
+    //     stockObj.id = stock.id;
+    //     return stockObj;
+    //   })
+    // );
+    return this.httpClient.put<any>(url, stock, this.httpOptions);
   }
 
   deleteStock(stockId: number): Observable<any> {

@@ -3,7 +3,7 @@
     {
       "name": "Apple",
       "code": "AAPL",
-      "price": 12,
+      "price": 120,
       "previousPrice": 110,
       "exchange": "NASDAQ",
       "favorite": false,
