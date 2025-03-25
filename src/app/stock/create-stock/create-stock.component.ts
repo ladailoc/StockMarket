@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
 import { Stock } from '../../model/stock';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StockService } from '../../services/stock.service';
@@ -12,6 +12,7 @@ import { HttpService } from '../../services/http.service';
 })
 export class CreateStockComponent {
   public stockForm!: FormGroup;
+  @Output() stockCreated = new EventEmitter<Stock>();
   constructor(private fb: FormBuilder, private _stockService: StockService, private httpService: HttpService) {
     this.createForm();
   }
@@ -20,8 +21,8 @@ export class CreateStockComponent {
     this.stockForm = this.fb.group({
       name: [null, [Validators.required, Validators.minLength(6)]],
       code: ["", [Validators.required, Validators.minLength(1)]],
-      price: [0, [Validators.required, Validators.min(0)]],
-      // previousPrice: [0, [Validators.required]],
+      price: ["", [Validators.required, Validators.min(0)]],
+      previousPrice: ["", [Validators.required]],
       exchange: ["", Validators.required],
       confirmed: [false, Validators.requiredTrue]
     });
@@ -45,7 +46,8 @@ export class CreateStockComponent {
     this.stockForm.patchValue({
       name: stockData.name,
       code: stockData.code,
-      price: stockData.price
+      price: stockData.price,
+      pricePrevious: stockData.previousPrice,
     });
     console.log("Sau khi patch form - isShowStockInfo:", this.isShowStockInfo);
 
@@ -54,11 +56,8 @@ export class CreateStockComponent {
   createStock() {
     if (this.stockForm.valid) {
       const stockData = this.stockForm.value;
-      const newStock = new Stock(stockData.name, stockData.code, stockData.price, 0, stockData.exchange);
-      this.httpService.addStock(newStock).subscribe({
-        next: () => this.httpService.getStocks(),
-        error: (err) => console.error('Error adding stock:', err)
-      });
+      const newStock = new Stock(stockData.name, stockData.code, stockData.price, stockData.previousPrice, stockData.exchange);
+      this.stockCreated.emit(newStock);
     } else {
       console.log('Form is invalid');
     }

@@ -1,3 +1,5 @@
+<!-- 
+
 <div *ngIf="!editing && !viewing">
     <div class="stock-name">{{ stock.name }}</div>
     <div class="stock-code">{{ stock.code }}</div>
@@ -5,7 +7,6 @@
         {{ stock.price }}
     </div>
 
-    <!-- <button (click)="toggleFavorite(stock)" [disabled]="stock.favorite">Add to Favorite</button> -->
     <button (click)="toggleFavorite(stock)" [disabled]="stock.favorite" class="btn-fav">Add to Favorite</button>
       
     <div class="stock-actions">
@@ -15,7 +16,6 @@
     </div>
 </div>
 
-<!-- Form View -->
 <div *ngIf="viewing" class="view-form">
     <h3>Chi tiết cổ phiếu</h3>
     <label>Mã cổ phiếu:</label>
@@ -37,7 +37,6 @@
 </div>
 
 
-<!-- Form Edit -->
 <form *ngIf="editing" [formGroup]="editStockForm">
     <label>Tên:</label>
     <input type="text" formControlName="name" />
@@ -58,4 +57,4 @@
         <button type="button" (click)="closeEdit()">Hủy</button>
     </div>
 </form>
-
+ -->

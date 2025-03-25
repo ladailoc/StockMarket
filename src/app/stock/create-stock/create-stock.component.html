@@ -1,6 +1,6 @@
 <div class="stock-form">
     <h2>Create Stock Form</h2>
-    <form [formGroup]="stockForm">
+    <form [formGroup]="stockForm" (ngSubmit)="createStock()">
         <input type="text" placeholder="Stock Name" class="form-input" [ngClass]="{
                     'valid-name': !stockForm.get('name')?.invalid,
                     'invalid-name': stockForm.get('name')?.invalid}" formControlName="name">
@@ -25,14 +25,26 @@
         </div>
 
         <input type="text" placeholder="Stock Price" class="form-input" [ngClass]="{
-                'valid-price': !stockForm.get('price')?.touched,
-                'invalid-price': stockForm.get('price')?.touched}" formControlName="price">
+                'valid-price': stockForm.get('price')?.valid,
+                'invalid-price': stockForm.get('price')?.invalid}" formControlName="price">
         <br>
 
         <div *ngIf="stockForm.get('price')?.invalid && 
             (stockForm.get('price')?.dirty || stockForm.get('price')?.touched)">
             <span *ngIf="stockForm.get('price')?.errors?.['required']" class="error-msg">
                 Stock price is required
+            </span>
+        </div>
+
+        <input type="text" placeholder="Stock Previous Price" class="form-input" [ngClass]="{
+            'valid-price': stockForm.get('previousPrice')?.valid,
+            'invalid-price': stockForm.get('previousPrice')?.invalid}" formControlName="previousPrice">
+        <br>
+
+        <div *ngIf="stockForm.get('previousPrice')?.invalid && 
+        (stockForm.get('previousPrice')?.dirty || stockForm.get('previousPrice')?.touched)">
+            <span *ngIf="stockForm.get('previousPrice')?.errors?.['required']" class="error-msg">
+                Stock Previous Price is required
             </span>
         </div>
 
@@ -43,19 +55,20 @@
 
         <br>
 
-        <input type="checkbox" name="" class="form-checkbox" formControlName="confirmed"> I confirm that the above details are correct<br>
-        
-        <button class="form-button" (click)="showStockInfo()">Submit</button>
-        <br><br>
-        
+        <input type="checkbox" name="" class="form-checkbox" formControlName="confirmed"> I confirm that the above
+        details are correct<br>
+
+        <!-- <button class="form-button" (click)="showStockInfo()">Submit</button> -->
+        <!-- <br><br> -->
+
         <button class="form-button" (click)="loadStockServer()">Load from Server</button>
         <br><br>
-        
-        <button class="form-button" (click)="createStock()">Create</button>
+
+        <button class="form-button" type="submit">Create</button>
     </form>
 </div>
 
-<div *ngIf="isShowStockInfo">
+<!-- <div *ngIf="isShowStockInfo">
     <p><strong>Form Control value: {{stockForm.value | json}}</strong></p>
     <p><strong>Form Control status: {{stockForm.status | json}}</strong></p>
-</div>
+</div> -->

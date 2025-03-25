@@ -1,21 +1,12 @@
 {
   "stocks": [
     {
-      "name": "Apple",
-      "code": "AAPL",
-      "price": 120,
-      "previousPrice": 110,
-      "exchange": "NASDAQ",
-      "favorite": false,
-      "id": "1"
-    },
-    {
-      "name": "Google",
+      "name": "Google1",
       "code": "GOOGL",
-      "price": 11,
+      "price": 200,
       "previousPrice": 200,
       "exchange": "NASDAQ",
-      "favorite": true,
+      "favorite": false,
       "id": "2"
     },
     {
@@ -53,6 +44,24 @@
       "exchange": "NASDAQ",
       "favorite": false,
       "id": "6"
+    },
+    {
+      "id": "4fc82b26",
+      "name": "Test11",
+      "code": "11",
+      "price": "100",
+      "previousPrice": "200",
+      "exchange": "ABC",
+      "favorite": false
+    },
+    {
+      "id": "58bb119c",
+      "name": "Test22",
+      "code": "AA",
+      "price": 150,
+      "previousPrice": "200",
+      "exchange": "ABC",
+      "favorite": false
     }
   ],
   "profile": {

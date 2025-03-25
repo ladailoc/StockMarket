@@ -11,57 +11,57 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './stock-item.component.scss',
 })
 export class StockItemComponent {
-  @Input() stock!: Stock;
-  editing = false;
-  viewing = false;
-  editStockForm!: FormGroup;
+  // @Input() stock!: Stock;
+  // editing = false;
+  // viewing = false;
+  // editStockForm!: FormGroup;
 
-  constructor(private _stockList: StockListComponent, private fb: FormBuilder) { }
+  // constructor(private _stockList: StockListComponent, private fb: FormBuilder) { }
 
-  createForm() {
-    this.editStockForm = this.fb.group({
-      name: [this.stock.name],
-      price: [this.stock.price],
-      previousPrice: [this.stock.previousPrice],
-      favorite: [this.stock.favorite]
-    });
-  }
+  // createForm() {
+  //   this.editStockForm = this.fb.group({
+  //     name: [this.stock.name],
+  //     price: [this.stock.price],
+  //     previousPrice: [this.stock.previousPrice],
+  //     favorite: [this.stock.favorite]
+  //   });
+  // }
 
-  toggleFavorite(stock: Stock) {
-    this._stockList.toggleFavorite(stock);
-  }
+  // toggleFavorite(stock: Stock) {
+  //   this._stockList.toggleFavorite(stock);
+  // }
   
-  viewStock() {
-    this.viewing = true;
-  }
+  // viewStock() {
+  //   this.viewing = true;
+  // }
 
-  closeView() {
-    this.viewing = false;
-  }
+  // closeView() {
+  //   this.viewing = false;
+  // }
 
-  editStock(stock: Stock) {
-    this.editing = true;
-    if (this.editing) {
-      this.createForm();
-    }
-  }
-  saveStock() {
-    if (this.editStockForm.valid) {
-      this.stock.name = this.editStockForm.value.name;
-      this.stock.price = this.editStockForm.value.price;
-      this.stock.previousPrice = this.editStockForm.value.previousPrice;
-      this.stock.favorite = this.editStockForm.value.favorite;
+  // editStock(stock: Stock) {
+  //   this.editing = true;
+  //   if (this.editing) {
+  //     this.createForm();
+  //   }
+  // }
+  // saveStock() {
+  //   if (this.editStockForm.valid) {
+  //     this.stock.name = this.editStockForm.value.name;
+  //     this.stock.price = this.editStockForm.value.price;
+  //     this.stock.previousPrice = this.editStockForm.value.previousPrice;
+  //     this.stock.favorite = this.editStockForm.value.favorite;
 
-      this._stockList.updatedStock(this.stock);
-      this.editing = false;
-    }
-  }
+  //     this._stockList.updatedStock(this.stock);
+  //     this.editing = false;
+  //   }
+  // }
 
-  closeEdit() {
-    this.editing = false;
-  }
+  // closeEdit() {
+  //   this.editing = false;
+  // }
 
-  deleteStock(stock: Stock) {
-    this._stockList.deleteStock(stock);
-  }
+  // deleteStock(stock: Stock) {
+  //   this._stockList.deleteStock(stock);
+  // }
 }

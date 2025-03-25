@@ -10,8 +10,6 @@ import { CreateStockComponent } from './stock/create-stock/create-stock.componen
 import { StockListComponent } from './stock/stock-list/stock-list.component';
 import { HomeComponent } from './home/home.component';
 import { StockService } from './services/stock.service';
-import { ListViewStockComponent } from './stock/list-view-stock/list-view-stock.component';
-import { GetDataComponent } from './stock/get-data/get-data.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -22,8 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
     CreateStockComponent,
     StockListComponent,
     HomeComponent,
-    ListViewStockComponent,
-    GetDataComponent,
   ],
   imports: [
     BrowserModule,

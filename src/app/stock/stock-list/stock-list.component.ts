@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StockService } from '../../services/stock.service';
 import { Stock } from '../../model/stock';
 import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -10,52 +12,119 @@ import { Observable } from 'rxjs';
   styleUrl: './stock-list.component.scss'
 })
 export class StockListComponent implements OnInit {
-  public stocks$!: Observable<Stock[]>;
+  stocks!: Stock[];
 
-  constructor(private _stockService: StockService) { }
+  isModalOpen = false;
+  modalMode: 'view' | 'edit' | 'add' | '' = '';
+  selectedStock!: Stock;
+  editStockForm!: FormGroup;
+  addStockForm!: FormGroup;
+  stockSearch!: any;
+  codeSearch!: string;
+  stockArray: Stock[] = [];
+  isSearch = false;
+  constructor(private httpService: HttpService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.loadStocks();
-    console.log("Stocks:", this.stocks$);
   }
 
   loadStocks() {
-    this.stocks$ = this._stockService.getStocks();
-  }
+    this.httpService.getStocks().subscribe(res => {
+      this.stocks = res.map((stock: Stock) => {
+        let stockObj = new Stock(
+          stock.name,
+          stock.code,
+          stock.price,
+          stock.previousPrice,
+          stock.exchange
+        );
+        stockObj.favorite = stock.favorite;
+        stockObj.id = stock.id;
+        return stockObj;
+      });
+      this.stockArray = this.stocks
+      console.log('stocks:', this.stocks);
+      console.log('stocks:', typeof this.stockArray);
 
-  searchStockByCode(code: string) {
-    code = code.trim().toLowerCase();
-    this.stocks$ = code.length === 0
-      ? this._stockService.getStocks()
-      : this._stockService.getStockByCode(code);
-  }
-
-  searchStockByName(name: string) {
-    name = name.trim().toLowerCase();
-    this.stocks$ = name.length === 0
-      ? this._stockService.getStocks()
-      : this._stockService.getStockByName(name);
-  }
-
-  toggleFavorite(stock: Stock) {
-    this._stockService.toggleFavorite(stock);
-  }
-
-  updatedStock(stock: Stock) {
-    this._stockService.updateStock(stock.code, stock).subscribe({
-      next: () => this.loadStocks(),
-      error: err => console.error('Error updating stock:', err)
     });
   }
 
-  deleteStock(stock: Stock) {
-    const confirmDelete = confirm("Bạn có chắc muốn xóa cổ phiếu này không?");
-    if (confirmDelete) {
-      this._stockService.deleteStock(stock.code).subscribe({
-        next: () => this.loadStocks(),
-        error: err => console.error('Error deleting stock:', err)
+  openModal(stock: Stock | null, mode: 'view' | 'edit' | 'add') {
+    this.modalMode = mode;
+    this.isModalOpen = true;
+
+    if ((mode === 'edit' || mode === 'view') && stock) {
+      this.selectedStock = stock;
+      this.editStockForm = this.fb.group({
+        code: [stock.code],
+        name: [stock.name],
+        price: [stock.price],
+        previousPrice: [stock.previousPrice],
+        favorite: [stock.favorite]
+      });
+    } else if (mode === 'add') {
+      this.selectedStock = {} as Stock; // Tạo một đối tượng Stock rỗng
+      this.addStockForm = this.fb.group({
+        code: [''],
+        name: [''],
+        price: [0],
+        previousPrice: [0],
+        favorite: [false]
       });
     }
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.modalMode = '';
+  }
+
+  saveStock() {
+    if (this.editStockForm.valid) {
+      this.selectedStock.name = this.editStockForm.value.name;
+      this.selectedStock.price = this.editStockForm.value.price;
+      this.selectedStock.previousPrice = this.editStockForm.value.previousPrice;
+      this.selectedStock.favorite = this.editStockForm.value.favorite;
+
+      this.httpService.updateStock(this.selectedStock).subscribe({
+        next: () => {
+          this.loadStocks();
+          this.closeModal();
+        },
+        error: err => console.error('Lỗi cập nhật:', err)
+      });
+    }
+
+  }
+
+  createStock(stock: Stock) {
+    this.httpService.addStock(stock).subscribe({
+      next: () => {
+        this.loadStocks();
+        this.closeModal();
+      },
+      error: err => console.error('Lỗi thêm cổ phiếu:', err)
+    });
+  }
+
+
+  deleteStock(stock: Stock) {
+    if (confirm("Bạn có chắc muốn xóa cổ phiếu này không?")) {
+      this.httpService.deleteStock(stock.id).subscribe(() => this.loadStocks());
+    }
+  }
+  toggleFavorite(stock: Stock) {
+    this.httpService.toggleFavorite(stock);
+  }
+
+  searchStockByCode() {
+    this.codeSearch = this.codeSearch.trim();
+    console.log('codeSearch:', this.codeSearch);
+    if (this.codeSearch === '') {
+      this.stockArray = this.stocks;
+    } else
+      this.stockArray = this.stocks.filter(stock => stock.code.toLowerCase().includes(this.codeSearch.toLowerCase()));
   }
 
 }
