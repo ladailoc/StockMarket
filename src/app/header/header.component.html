@@ -1,0 +1,18 @@
+<div class="nav-bar">
+  <div class="nav-bar__logo"><a href="">LOGO</a></div>
+  <div class="nav-bar__function">
+    <a routerLink="/stock/stock-list" class="nav-bar__function--link"
+      >List Stock</a
+    >
+  </div>
+  <div class="nav-bar__menu">
+    <div class="user" *ngIf="loadName(); else guest">
+      <a>Hello, {{ loadName() }}</a>
+      <a class="logout" href="#" (click)="logout()">Logout</a>
+    </div>
+    <ng-template #guest>
+      <a routerLink="/login" class="login">Login</a>
+      <a routerLink="/register" class="register">Register</a>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="stock-details" *ngIf="stock">
+  <h2>{{ stock.name }}</h2>
+  <p><strong>Sàn giao dịch:</strong> {{ stock.exchange }}</p>
+  <p><strong>Giá hiện tại:</strong> {{ stock.price }} USD</p>
+  <p><strong>Giá trước đó:</strong> {{ stock.previousPrice }} USD</p>
+  <p><strong>Thay đổi:</strong> {{ stock.price - stock.previousPrice }} USD</p>
+  <p><strong>Yêu thích:</strong> {{ stock.favorite ? "Có" : "Không" }}</p>
+  <button class="back-button" routerLink="/stock/stock-list">Quay lại</button>
+</div>

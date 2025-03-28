@@ -1,0 +1,42 @@
+.stock-details {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #616161;
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.stock-details h2 {
+  color: #f8f9fa;
+  font-size: 24px;
+  border-bottom: 2px solid #f8f9fa;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.stock-details p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #1e1e1e;
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #c0c0c0;
+  color: #1e1e1e;
+}

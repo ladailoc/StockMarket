@@ -1,11 +1,50 @@
-<h2>Welcom to Stock Market App!</h2>
+<div class="home-container">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Chào mừng đến với StockMarket</h1>
+      <p>Theo dõi thị trường, phân tích xu hướng và đầu tư thông minh.</p>
+      <a routerLink="/stock/stock-list" class="btn">Xem Thị Trường</a>
+    </div>
+    <div class="hero-image">
+      <img src="assets/images/stock-market.avif" alt="Stock Market" />
+    </div>
+  </section>
 
-<hr><br>
-<app-stock-list></app-stock-list>
-<!-- <app-list-view-stock></app-list-view-stock> -->
+  <section class="about">
+    <h2>Tại sao chọn StockMarket?</h2>
+    <div class="features">
+      <div class="feature">
+        <!-- <img src="assets/images/real-time-data.avif" alt="Real-time Data" /> -->
+        <h3>Dữ liệu thị trường thời gian thực</h3>
+        <p>
+          Cập nhật giá cổ phiếu theo thời gian thực để giúp bạn ra quyết định
+          chính xác.
+        </p>
+      </div>
+      <div class="feature">
+        <!-- <img src="assets/images/analysis.png" alt="Stock Analysis" /> -->
+        <h3>Phân tích chuyên sâu</h3>
+        <p>
+          Công cụ phân tích biểu đồ giúp bạn theo dõi xu hướng và dự báo thị
+          trường.
+        </p>
+      </div>
+      <div class="feature">
+        <!-- <img src="assets/images/secure.png" alt="Secure Trading" /> -->
+        <h3>An toàn và bảo mật</h3>
+        <p>
+          Công nghệ bảo mật tiên tiến giúp bảo vệ dữ liệu và tài khoản đầu tư
+          của bạn.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<!-- Get data from API -->
-<!-- <app-get-data></app-get-data> -->
-
-<!-- <br><hr><br> -->
-<!-- <app-create-stock></app-create-stock> -->
+  <section class="cta">
+    <h2>Bắt đầu đầu tư ngay hôm nay!</h2>
+    <p>
+      Tham gia cùng hàng nghìn nhà đầu tư để tận dụng cơ hội trên thị trường.
+    </p>
+    <a routerLink="/register" class="btn">Đăng ký ngay</a>
+  </section>
+</div>

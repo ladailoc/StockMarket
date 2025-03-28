@@ -3,17 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { StockItemComponent } from './stock/stock-item/stock-item.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { StockListComponent } from './stock/stock-list/stock-list.component';
+import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'stock/stock-item', component: StockItemComponent },
+  { path: 'stock/stock-list', component: StockListComponent },
+  { path: 'stock/stock-details', component: StockDetailsComponent },
   { path: 'home', component: HomeComponent },
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

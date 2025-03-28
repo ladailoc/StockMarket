@@ -11,6 +11,10 @@ import { StockListComponent } from './stock/stock-list/stock-list.component';
 import { HomeComponent } from './home/home.component';
 import { StockService } from './services/stock.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     CreateStockComponent,
     StockListComponent,
     HomeComponent,
+    RegisterComponent,
+    StockDetailsComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

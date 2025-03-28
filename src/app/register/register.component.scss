@@ -14,7 +14,7 @@ body {
   background: #f5f5f5; /* Màu nền xám nhạt */
   margin: 0; /* Loại bỏ margin mặc định */
 }
-
+/* Form Container */
 #container {
   display: flex;
   justify-content: center;
@@ -23,7 +23,7 @@ body {
   height: 85vh; /* Đảm bảo toàn bộ chiều cao màn hình */
 }
 
-#login_box {
+#register_box {
   background: #fff; /* Nền trắng */
   padding: 30px;
   width: 350px;
@@ -33,14 +33,15 @@ body {
 }
 
 /* Tiêu đề */
-#login_box h2 {
-  color: #000;
+#register_box h2 {
+  color: black;
   font-size: 22px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
-/* Input fields */
-#login_box label {
+/* Nhãn */
+#register_box label {
   display: block;
   text-align: left;
   font-size: 14px;
@@ -49,7 +50,8 @@ body {
   color: #333;
 }
 
-#login_box input {
+/* Input Fields */
+#register_box input {
   width: 100%;
   padding: 12px;
   border: 2px solid #ccc;
@@ -60,7 +62,7 @@ body {
 }
 
 /* Hiệu ứng khi focus */
-#login_box input:focus {
+#register_box input:focus {
   border-color: black;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
@@ -85,7 +87,7 @@ body {
   border: 2px solid black;
 }
 
-/* Lỗi */
+/* Thông báo lỗi */
 .error {
   color: red;
   margin-top: 10px;

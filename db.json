@@ -1,9 +1,9 @@
 {
   "stocks": [
     {
-      "name": "Google1",
+      "name": "Google",
       "code": "GOOGL",
-      "price": 200,
+      "price": 2000,
       "previousPrice": 200,
       "exchange": "NASDAQ",
       "favorite": false,
@@ -62,9 +62,32 @@
       "previousPrice": "200",
       "exchange": "ABC",
       "favorite": false
+    },
+    {
+      "id": "58bb119c",
+      "name": "Test33",
+      "code": "AA",
+      "price": 150,
+      "previousPrice": "110",
+      "exchange": "ABC",
+      "favorite": false
     }
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "users": [
+    {
+      "id": "8c6976e5",
+      "username": "admin",
+      "password": "123",
+      "email": "admin@gmail.com"
+    },
+    {
+      "id": "a7f32380",
+      "username": "loc",
+      "password": "123",
+      "email": "loc@gmail.com"
+    }
+  ]
 }
