@@ -25,6 +25,7 @@ export class StockListComponent implements OnInit {
   codeSearch!: string;
   stockArray: Stock[] = [];
   isSearch = false;
+  isFav = false;
   constructor(
     private httpService: HttpService,
     private fb: FormBuilder,
@@ -55,6 +56,7 @@ export class StockListComponent implements OnInit {
       console.log('stocks:', typeof this.stockArray);
     });
     this.isLogin = this.auth.getUsername() ? true : false;
+    this.isFav = false;
   }
 
   openModal(stock: Stock | null, mode: 'view' | 'edit' | 'add') {
@@ -127,7 +129,8 @@ export class StockListComponent implements OnInit {
   }
 
   toggleFavorite(stock: Stock) {
-    this.httpService.toggleFavorite(stock);
+    stock.favorite = !stock.favorite;
+    this.httpService.toggleFavorite(stock).subscribe();
   }
 
   searchStockByCode() {
@@ -139,5 +142,10 @@ export class StockListComponent implements OnInit {
       this.stockArray = this.stocks.filter((stock) =>
         stock.code.toLowerCase().includes(this.codeSearch.toLowerCase())
       );
+  }
+
+  filterFav() {
+    this.isFav = true;
+    this.stockArray = this.stockArray.filter((stock) => stock.favorite);
   }
 }

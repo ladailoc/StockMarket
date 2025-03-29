@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Stock } from '../model/stock';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpService {
   // Inject HttpClient server
@@ -16,7 +16,7 @@ export class HttpService {
     }),
   };
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   // Get method
   public getStocks(): Observable<any> {
@@ -24,8 +24,9 @@ export class HttpService {
     return this.httpClient.get<any>(url, this.httpOptions);
   }
 
-  toggleFavorite(stock: any) {
-    stock.favorite = !stock.favorite;
+  toggleFavorite(stock: any): Observable<any> {
+    // stock.favorite = !stock.favorite;
+    console.log('stock:', stock);
     const url = `${this.REST_API_SERVER}/stocks/${stock.id}`;
     return this.httpClient.put<any>(url, stock, this.httpOptions);
   }

@@ -13,6 +13,8 @@ export class StockDetailsComponent {
 
   ngOnInit(): void {
     const navigation = this.location.getState() as any;
+    console.log('navigation:', navigation);
+
     this.stock = navigation.stockData;
   }
 }

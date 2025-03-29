@@ -13,6 +13,12 @@
   <button class="btn-add" (click)="openModal(null, 'add')">
     + Thêm cổ phiếu
   </button>
+  <button *ngIf="!isFav" class="filter-fav" (click)="filterFav()">
+    Lọc yêu thích
+  </button>
+  <button *ngIf="isFav" class="filter-fav" (click)="loadStocks()">
+    Xem toàn bộ
+  </button>
 </div>
 
 <!-- <div *ngIf="stocks$ | async as stocks" class="stock-container">
@@ -59,12 +65,24 @@
         />
       </td>
       <td class="actions">
-        <button class="btn-detail" (click)="viewDetail(stock)">
-          Chi tiết
+        <button class="btn-detail" (click)="viewDetail(stock)">Chi tiết</button>
+        <button
+          *ngIf="isLogin"
+          class="btn-view"
+          (click)="openModal(stock, 'view')"
+        >
+          Xem
         </button>
-        <button *ngIf="isLogin" class="btn-view" (click)="openModal(stock, 'view')">Xem</button>
-        <button *ngIf="isLogin" class="btn-edit" (click)="openModal(stock, 'edit')">Sửa</button>
-        <button *ngIf="isLogin" class="btn-delete" (click)="deleteStock(stock)">Xóa</button>
+        <button
+          *ngIf="isLogin"
+          class="btn-edit"
+          (click)="openModal(stock, 'edit')"
+        >
+          Sửa
+        </button>
+        <button *ngIf="isLogin" class="btn-delete" (click)="deleteStock(stock)">
+          Xóa
+        </button>
       </td>
     </tr>
   </tbody>

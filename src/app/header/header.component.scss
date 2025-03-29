@@ -3,12 +3,22 @@
   justify-content: space-between; /* Căn giữa logo và menu */
   align-items: center;
   background: #fff; /* Màu nền trắng */
-  padding: 15px 40px;
+  padding: 8px 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
 }
 
 .nav-bar__logo a {
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+.nav-bar__logo a img {
+  width: 50px; /* Kích thước logo */
+  height: auto;
+  margin-right: 10px; /* Khoảng cách giữa logo và tên */
+}
+
+.nav-bar__logo a .logo-name {
+  font-size: 20px;
   font-weight: bold;
   color: #000; /* Màu đen */
   text-decoration: none;

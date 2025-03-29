@@ -14,7 +14,13 @@
   gap: 15px;
 }
 
-.footer__logo a {
+.footer__logo a img {
+  width: 75px;
+  height: auto;
+  margin: 0 auto; /* Căn giữa logo */
+}
+
+.footer__logo a .logo-name {
   font-size: 24px;
   font-weight: bold;
   color: #fff;
