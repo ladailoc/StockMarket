@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../model/user';
 import { Router } from '@angular/router';
-
+import { environment } from '../../../env';
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-register',
   standalone: false,
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   email: string = '';
   errorMessage: string = '';
   users: User[] = [];
-
+  SECRET_KEY = CryptoJS.enc.Utf8.parse(environment.SECRET_KEY);
+  IV = CryptoJS.enc.Utf8.parse(environment.IV);
   constructor(private userService: UserService, private route: Router) {}
 
   ngOnInit() {
@@ -28,6 +30,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  encryptPassword(password: string): string {
+    const encryptedText = CryptoJS.AES.encrypt(password, this.SECRET_KEY, {
+      iv: this.IV,
+      mode: CryptoJS.mode.CBC,
+    }).toString();
+    return encryptedText;
+  }
+
   register() {
     if (this.username && this.password && this.email) {
       // Check if username already exists
@@ -38,7 +48,11 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = 'Username already exists!';
         return;
       }
-      const newUser = new User(this.username, this.password, this.email);
+      const newUser = new User(
+        this.username,
+        this.encryptPassword(this.password),
+        this.email
+      );
       this.userService.addUser(newUser).subscribe((res) => {
         console.log('User registered successfully:', res);
       });
