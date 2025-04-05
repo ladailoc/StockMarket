@@ -4,7 +4,7 @@
       "name": "Google",
       "code": "GOOGL",
       "price": 120,
-      "previousPrice": 200,
+      "previousPrice": 201,
       "exchange": "NASDAQ",
       "favorite": true,
       "id": "2"
@@ -15,17 +15,17 @@
       "price": 3200,
       "previousPrice": 3100,
       "exchange": "NASDAQ",
-      "favorite": false,
+      "favorite": true,
       "id": "3"
     },
     {
-      "id": "4",
-      "code": "MSFT",
       "name": "Microsoft",
+      "code": "MSFT",
       "price": 220,
       "previousPrice": 210,
       "exchange": "NASDAQ",
-      "favorite": false
+      "favorite": true,
+      "id": "4"
     },
     {
       "name": "Tesla",
@@ -55,20 +55,20 @@
       "favorite": false
     },
     {
-      "id": "58bb119c",
-      "name": "Test33",
-      "code": "AA",
-      "price": 150,
-      "previousPrice": "110",
+      "id": "f6e0a1e2",
+      "name": "Test22",
+      "code": "111",
+      "price": "111",
+      "previousPrice": "111",
       "exchange": "ABC",
       "favorite": false
     },
     {
-      "id": "58bb119c",
-      "name": "Apple In",
-      "code": "AA",
+      "id": "1eb44d62",
+      "name": "Apple Inc.",
+      "code": "AAPL",
       "price": 150,
-      "previousPrice": "110",
+      "previousPrice": 150,
       "exchange": "ABC",
       "favorite": false
     }

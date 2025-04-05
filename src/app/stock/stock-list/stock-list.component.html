@@ -13,9 +13,11 @@
   <button class="btn-add" (click)="openModal(null, 'add')">
     + Thêm cổ phiếu
   </button>
-  <button *ngIf="!isFav" class="filter-fav" (click)="filterFav()">
+
+  <button *ngIf="!isFav"  class="filter-fav" (click)="filterFav()">
     Lọc yêu thích
   </button>
+
   <button *ngIf="isFav" class="filter-fav" (click)="loadStocks()">
     Xem toàn bộ
   </button>

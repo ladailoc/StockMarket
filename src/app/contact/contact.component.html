@@ -1,0 +1,51 @@
+<div class="contact-container">
+  <h1>Liên hệ với chúng tôi</h1>
+
+  <p>
+    Nếu bạn có bất kỳ câu hỏi, yêu cầu hoặc phản hồi nào, vui lòng điền vào form
+    dưới đây và chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.
+  </p>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Tên của bạn</label>
+      <input
+        id="name"
+        formControlName="name"
+        type="text"
+        placeholder="Nhập tên của bạn"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        placeholder="Nhập email của bạn"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Số điện thoại</label>
+      <input
+        id="phone"
+        formControlName="phone"
+        type="text"
+        placeholder="Nhập số điện thoại của bạn"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="message">Tin nhắn</label>
+      <textarea
+        id="message"
+        formControlName="message"
+        placeholder="Nhập tin nhắn của bạn"
+      ></textarea>
+    </div>
+
+    <button type="submit" [disabled]="!contactForm.valid">Gửi</button>
+  </form>
+</div>

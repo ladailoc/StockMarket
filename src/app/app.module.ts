@@ -15,7 +15,18 @@ import { RegisterComponent } from './register/register.component';
 import { StockDetailsComponent } from './stock/stock-details/stock-details.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { ProfileComponent } from './profile/profile.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,17 +39,27 @@ import { FooterComponent } from './footer/footer.component';
     StockDetailsComponent,
     HeaderComponent,
     FooterComponent,
+    ProfileComponent,
+    AboutComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
-  providers: [
-    StockService
-  ],
-  bootstrap: [AppComponent]
+  providers: [StockService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

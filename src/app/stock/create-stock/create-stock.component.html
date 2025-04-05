@@ -1,71 +1,118 @@
 <div class="stock-form">
-    <h2>Create Stock Form</h2>
-    <form [formGroup]="stockForm" (ngSubmit)="createStock()">
-        <input type="text" placeholder="Stock Name" class="form-input" [ngClass]="{
-                    'valid-name': !stockForm.get('name')?.invalid,
-                    'invalid-name': stockForm.get('name')?.invalid}" formControlName="name">
+  <h2>Create Stock Form</h2>
+  <form [formGroup]="stockForm" (ngSubmit)="createStock()">
+    <input
+      type="text"
+      placeholder="Stock Name"
+      class="form-input"
+      [ngClass]="{
+        'valid-name': !stockForm.get('name')?.invalid,
+        'invalid-name': stockForm.get('name')?.invalid
+      }"
+      formControlName="name"
+    />
 
-        <!-- Check valid name-->
-        <div *ngIf="stockForm.get('name')?.invalid && 
-                (stockForm.get('name')?.dirty || stockForm.get('name')?.touched)" class="error-msg">
-            Name phải có độ dài lớn hơn 6
-        </div>
+    <!-- Check valid name-->
+    <div
+      *ngIf="
+        stockForm.get('name')?.invalid &&
+        (stockForm.get('name')?.dirty || stockForm.get('name')?.touched)
+      "
+      class="error-msg"
+    >
+      Name phải có độ dài lớn hơn 6
+    </div>
 
-        <input type="text" placeholder="Stock Code" class="form-input" [ngClass]="{
-                    'valid-code': stockForm.get('code')?.invalid,
-                    'invalid-code': !stockForm.get('code')?.invalid}" formControlName="code">
-        <br>
+    <input
+      type="text"
+      placeholder="Stock Code"
+      class="form-input"
+      [ngClass]="{
+        'valid-code': stockForm.get('code')?.invalid,
+        'invalid-code': !stockForm.get('code')?.invalid
+      }"
+      formControlName="code"
+    />
+    <br />
 
-        <!-- Check valid code -->
-        <div *ngIf="stockForm.get('code')?.invalid && 
-                (stockForm.get('code')?.dirty || stockForm.get('code')?.touched)">
-            <span *ngIf="stockForm.get('code')?.errors?.['required']" class="error-msg">
-                Stock code is required
-            </span>
-        </div>
+    <!-- Check valid code -->
+    <div
+      *ngIf="
+        stockForm.get('code')?.invalid &&
+        (stockForm.get('code')?.dirty || stockForm.get('code')?.touched)
+      "
+    >
+      <span
+        *ngIf="stockForm.get('code')?.errors?.['required']"
+        class="error-msg"
+      >
+        Stock code is required
+      </span>
+    </div>
 
-        <input type="text" placeholder="Stock Price" class="form-input" [ngClass]="{
-                'valid-price': stockForm.get('price')?.valid,
-                'invalid-price': stockForm.get('price')?.invalid}" formControlName="price">
-        <br>
+    <input
+      type="text"
+      placeholder="Stock Price"
+      class="form-input"
+      [ngClass]="{
+        'valid-price': stockForm.get('price')?.valid,
+        'invalid-price': stockForm.get('price')?.invalid
+      }"
+      formControlName="price"
+    />
+    <br />
 
-        <div *ngIf="stockForm.get('price')?.invalid && 
-            (stockForm.get('price')?.dirty || stockForm.get('price')?.touched)">
-            <span *ngIf="stockForm.get('price')?.errors?.['required']" class="error-msg">
-                Stock price is required
-            </span>
-        </div>
+    <div
+      *ngIf="
+        stockForm.get('price')?.invalid &&
+        (stockForm.get('price')?.dirty || stockForm.get('price')?.touched)
+      "
+    >
+      <span
+        *ngIf="stockForm.get('price')?.errors?.['required']"
+        class="error-msg"
+      >
+        Stock price is required
+      </span>
+    </div>
 
-        <input type="text" placeholder="Stock Previous Price" class="form-input" [ngClass]="{
+    <!-- <input type="text" placeholder="Stock Previous Price" class="form-input" [ngClass]="{
             'valid-price': stockForm.get('previousPrice')?.valid,
             'invalid-price': stockForm.get('previousPrice')?.invalid}" formControlName="previousPrice">
-        <br>
+        <br> -->
 
-        <div *ngIf="stockForm.get('previousPrice')?.invalid && 
+    <!-- <div *ngIf="stockForm.get('previousPrice')?.invalid && 
         (stockForm.get('previousPrice')?.dirty || stockForm.get('previousPrice')?.touched)">
             <span *ngIf="stockForm.get('previousPrice')?.errors?.['required']" class="error-msg">
                 Stock Previous Price is required
             </span>
-        </div>
+        </div> -->
 
-        <select class="form-select" formControlName="exchange">
-            <option value="ABC">ABC</option>
-            <option value="XYZ">XYZ</option>
-        </select>
+    <select class="form-select" formControlName="exchange">
+      <option value="ABC">ABC</option>
+      <option value="XYZ">XYZ</option>
+    </select>
 
-        <br>
+    <br />
 
-        <input type="checkbox" name="" class="form-checkbox" formControlName="confirmed"> I confirm that the above
-        details are correct<br>
+    <input
+      type="checkbox"
+      name=""
+      class="form-checkbox"
+      formControlName="confirmed"
+    />
+    I confirm that the above details are correct<br />
 
-        <!-- <button class="form-button" (click)="showStockInfo()">Submit</button> -->
-        <!-- <br><br> -->
+    <!-- <button class="form-button" (click)="showStockInfo()">Submit</button> -->
+    <!-- <br><br> -->
 
-        <button class="form-button" (click)="loadStockServer()">Load from Server</button>
-        <br><br>
+    <button class="form-button" (click)="loadStockServer()">
+      Load from Server
+    </button>
+    <br /><br />
 
-        <button class="form-button" type="submit">Create</button>
-    </form>
+    <button class="form-button" type="submit">Create</button>
+  </form>
 </div>
 
 <!-- <div *ngIf="isShowStockInfo">
